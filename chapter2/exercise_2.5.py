@@ -32,7 +32,7 @@ def eps_greedy(epsilon, Q):
         return np.random.choice(action_space)
 
 
-def single_step_single_task(max_iter, task_number, epsilon, arm_number, step_size):
+def single_iteration_single_task(max_iter, task_number, epsilon, arm_number, step_size):
     rows, cols = task_number, arm_number
     # my_matrix = np.array([([0.0] * cols) for i in range(rows)])
     constQ = np.array([([0.0] * cols) for i in range(rows)])
@@ -93,7 +93,7 @@ def single_step_single_task(max_iter, task_number, epsilon, arm_number, step_siz
     print(variaQ)
 
 
-def single_step_multi_task(max_iter, task_number, epsilon, arm_number, step_size):
+def single_iteration_multi_task(max_iter, task_number, epsilon, arm_number, step_size):
     tasks, arms = task_number, arm_number
 
     # Init the constant step-size setting. Q is the estimate of q*.
@@ -214,21 +214,16 @@ if __name__ == '__main__':
     import time
 
     seed = time.time()
-
     np.random.seed(0)
     start_1 = time.time()
-    # np.random.seed(seed)
-    single_step_multi_task(max_iter, task_number, epsilon, arm_number, step_size)
-    # single_step_multi_task(max_iter, task_number, 0.1, arm_number, step_size)
-    # single_step_multi_task(max_iter, task_number, 0.5, arm_number, step_size)
+    single_iteration_multi_task(max_iter, task_number, epsilon, arm_number, step_size)
     end_1 = time.time()
-    print("SSMT", end_1 - start_1)
+    print("SIMT", end_1 - start_1)
 
-    exit(0)
     np.random.seed(0)
-    start = time.time()
-    single_step_single_task(max_iter, task_number, epsilon, arm_number, step_size)
-    end = time.time()
+    start_2 = time.time()
+    single_iteration_single_task(max_iter, task_number, epsilon, arm_number, step_size)
+    end_2 = time.time()
 
-    print("SSMT", end_1 - start_1)
-    print("SSST", end - start)
+    print("SIMT", end_1 - start_1)
+    print("SIST", end_2 - start_2)
