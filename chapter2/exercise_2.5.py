@@ -1,3 +1,10 @@
+#######################################################################
+# Copyright (C)                                                       #
+# 2018 - 2020 Bryce Chen (brycechen1849@gmail.com)                    #
+# Permission given to modify the code as long as you keep this        #
+# declaration at the top                                              #
+#######################################################################
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -15,7 +22,7 @@ def eps_greedy(epsilon, Q):
     sample = np.random.uniform(0, 1)
     if sample <= 1 - epsilon:
         i = np.argmax(Q)
-        dim = np.size(Q)
+        # dim = np.size(Q)
         return i
     else:
         i = np.argmax(Q)
@@ -27,7 +34,7 @@ def eps_greedy(epsilon, Q):
 
 def single_step_single_task(max_iter, task_number, epsilon, arm_number, step_size):
     rows, cols = task_number, arm_number
-    my_matrix = np.array([([0.0] * cols) for i in range(rows)])
+    # my_matrix = np.array([([0.0] * cols) for i in range(rows)])
     constQ = np.array([([0.0] * cols) for i in range(rows)])
     variaQ = np.array([([0.0] * cols) for i in range(rows)])
     q = np.array([([0.0] * cols) for i in range(rows)])
@@ -177,7 +184,7 @@ def single_step_multi_task(max_iter, task_number, epsilon, arm_number, step_size
         Q_s_avg[index, a] += alpha * (Q_target - Q_old)
 
     plt.xlabel('Steps')
-    plt.ylabel('Average Return')
+    plt.ylabel('Average Reward')
     plt.plot(R_s_avg, color='r')
     plt.plot(R_const, color='b')
     plt.xticks(np.arange(0, max_iter + 1, max_iter / 10))
@@ -194,9 +201,9 @@ def single_step_multi_task(max_iter, task_number, epsilon, arm_number, step_size
 
 if __name__ == '__main__':
     # The iteration counts for a single experiment
-    max_iter = 5000
+    max_iter = 100000
     # Total experiment counts (used the word 'task' in the book).
-    task_number = 200
+    task_number = 10
     # The exploration probability.
     epsilon = 0.1
     # The test bed size (action space).
@@ -212,10 +219,12 @@ if __name__ == '__main__':
     start_1 = time.time()
     # np.random.seed(seed)
     single_step_multi_task(max_iter, task_number, epsilon, arm_number, step_size)
+    # single_step_multi_task(max_iter, task_number, 0.1, arm_number, step_size)
+    # single_step_multi_task(max_iter, task_number, 0.5, arm_number, step_size)
     end_1 = time.time()
     print("SSMT", end_1 - start_1)
 
-    # exit(0)
+    exit(0)
     np.random.seed(0)
     start = time.time()
     single_step_single_task(max_iter, task_number, epsilon, arm_number, step_size)
