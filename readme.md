@@ -12,6 +12,10 @@ The solutions are in exercise_answers.md. PDF Release will be available soon.
 + matplotlib == 3.3.1
 + tqdm == 4.49
 
+### Specifications
+Usually, I choose 0 as random seed (as specified in code). This allow everyone to reproduce exactly the same results and figures as I did in this note.  
+I believe this, reproducibility, is of great importance when your own code is behaving strangely but you are not sure if it's a bug. 
+
 ### Examples
 1. ***Exercise 2.3*** In the comparison shown in Figure 2.2, which method will perform best in the long run in terms of cumulative reward and probability of selecting the best action? How much better will it be? Express your answer quantitatively.
 
@@ -29,21 +33,28 @@ Prepare plots like Figure 2.2 for an action-value method using sample averages, 
     ***Ans:***  
     Experiments done by exercise_2_5.py  
     The lines inserted to Bandit.step for the non-stationary bandit implementation:  
-    ```python  
+    ``` python  
     # Nonstationary Bandit    
     self.q_true += np.random.normal(loc=0, scale=0.01, size=(self.k,))
     self.best_action = np.argmax(self.q_true)
     ```   
+    and in Bandit.reset:
+    
+    ``` python
+    # As stated in the prob, q starts at 0.
+    self.q_true = np.zeros(shape=(self.k,)) + self.true_reward
+    ```
+   
     The constant step-size method outperformed the sample average method in terms of both average reward and best action hit rate.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
     ![exercise 2.5](images/exercise_2_5.png)
 
     I also wrote another code exercise_2_5_SIMR.py for this exercise. 
-    The SIMR stands for Single Iteration Multi Runs. 
+    The SIMR stands for **Single Iteration Multi Runs**. 
     Instead of, in the original code, going all the way through a complete run one after another, 
     this version simultaneously operates multi-runs at each iteration, as if those runs are in parallel.  
-    This allowed us to utilize the power of the optimized vector computation tools in numpy, and It actually
-    get around 8x faster than the first code implementation.
+    This allowed us to utilize the power of the optimized vector computation tools in numpy, and it actually
+    gets around **8x faster** than the first implementation.
     
     ![exercise 2.5 SIMR](images/exercise_2_5_SIMR.png)
 
