@@ -49,37 +49,37 @@ class Bandit:
         #             d0, d1, ..., dn : int, optional
         #                 The dimensions of the returned array, must be non-negative.
         #                 If no argument is given a single Python float is returned
-
         self.q_true = np.random.randn(self.k) + self.true_reward
-
         # estimation for each action
         self.q_estimation = np.zeros(self.k) + self.initial
-
-        # # of chosen times for each action
+        # number of chosen times for each action
         self.action_count = np.zeros(self.k)
-
         self.best_action = np.argmax(self.q_true)
-
         self.time = 0
 
-    # get an action for this bandit
+    # Get an action for this bandit
     def act(self):
         if np.random.rand() < self.epsilon:
             return np.random.choice(self.indices)
-
-        if self.UCB_param is not None:
+        elif self.UCB_param is not None:
             UCB_estimation = self.q_estimation + \
                              self.UCB_param * np.sqrt(np.log(self.time + 1) / (self.action_count + 1e-5))
             q_best = np.max(UCB_estimation)
+
+            # Why not just directly use argmax here?
+            # If there are more than one options that are simultaneously max,
+            # we still want to randomly choose among these options.
+            # Same reason for the following 2 if branch.
             return np.random.choice(np.where(UCB_estimation == q_best)[0])
 
-        if self.gradient:
+        elif self.gradient:
             exp_est = np.exp(self.q_estimation)
             self.action_prob = exp_est / np.sum(exp_est)
             return np.random.choice(self.indices, p=self.action_prob)
 
-        q_best = np.max(self.q_estimation)
-        return np.random.choice(np.where(self.q_estimation == q_best)[0])
+        else:
+            q_best = np.max(self.q_estimation)
+            return np.random.choice(np.where(self.q_estimation == q_best)[0])
 
     # take an action, update estimation for this action
     def step(self, action):
@@ -239,9 +239,9 @@ def figure_2_6(runs=2000, time=1000):
 
 
 if __name__ == '__main__':
-    figure_2_1()
-    figure_2_2()
-    figure_2_3()
+    # figure_2_1()
+    # figure_2_2()
+    # figure_2_3()
     figure_2_4()
-    figure_2_5()
-    figure_2_6()
+    # figure_2_5()
+    # figure_2_6()

@@ -1,5 +1,5 @@
 ### Introduction 
-This is a personal notes for the book Reinforcement Learning (Sutton & Bartol).
+This is a personal notes for the book Reinforcement Learning: A Introduction (By Sutton & Bartol).
 These codes (will) include:
 + Solutions to exercise problems
 + The code generating each figure in the book.
@@ -10,4 +10,4 @@ The bulk part of the implementation are from:
 + The code for Figures: https://github.com/ShangtongZhang/reinforcement-learning-an-introduction/blob/master/chapter02/ten_armed_testbed.py
 
 ###
-Again, this is just a personal notes and it's still being updated becuase I'm, at the same time, reading this book and trying to get familiar with the RL research area.
+Again, this serves mainly as a personal note for the book and it's still being updated becuase I'm, at the same time, trying to get familiar with the RL research area.
