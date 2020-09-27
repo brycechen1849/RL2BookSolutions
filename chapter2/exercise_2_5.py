@@ -1,11 +1,11 @@
 #######################################################################
 # Copyright (C)                                                       #
+# Description : Simulation code for exercise 2.5                      #
 # 2018 - 2020 Bryce Chen (brycechen1849@gmail.com)                    #
-# Date created: 2020/09/27                                            #
-# Description : Simulation code for exercise 2.5                    #
+# Date created: 2020/09/26                                            #
 # Permission given to modify the code as long as you keep this        #
 # declaration at the top                                              #
-#######################################################################
+# #####################################################################
 
 import numpy as np
 import matplotlib

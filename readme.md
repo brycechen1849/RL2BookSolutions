@@ -55,7 +55,7 @@ Prepare plots like Figure 2.2 for an action-value method using sample averages, 
 
     Unsatisfied with the simulation speed, I wrote a new version exercise_2_5_SIMR.py for this exercise prob. 
     SIMR stands for **Single Iteration Multi Runs** (You know it's from SIMD in chips). 
-    Instead of, in the original code, going all the way through a complete run one after another, 
+    Instead of going all the way through a complete run one after another, 
     this version simultaneously operates multi-runs at each iteration, as if those runs are in parallel.  
     This allowed us to utilize the power of the optimized vector computation tools in numpy, and it actually
     gets around **8x faster** than the first implementation.
@@ -70,5 +70,5 @@ The bulk part of the implementations are from:
 
 For figures, usage and examples can be accessed at *[Matplotlib Gallery](https://matplotlib.org/gallery/index.html)*
 ### Finally
-Again, this serves mainly as a personal note for the book and it's still being rapidly updated because I'm, at the same time, trying to get familiar with the RL research area.  
+Again, this serves mainly as a note for the book and it's still being rapidly updated because I'm, at the same time, trying to get familiar with the RL research area.  
 If you have any questions, feel free to contact me at brycechen1849@gmail.com .

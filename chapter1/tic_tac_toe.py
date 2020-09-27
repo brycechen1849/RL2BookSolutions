@@ -1,6 +1,5 @@
 #######################################################################
 # Copyright (C)                                                       #
-# 2018 - 2020 Bryce Chen (brycechen1849@gmail.com)                    #
 # 2016-2018 Shangtong Zhang(zhangshangtong.cpp@gmail.com)             #
 # 2016 Tian Jun(tianjun.cpp@gmail.com)                                #
 # 2016 Artem Oboturov(oboturov@gmail.com)                             #
