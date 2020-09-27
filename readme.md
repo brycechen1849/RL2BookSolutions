@@ -1,5 +1,5 @@
 ### Introduction 
-This is a personal note for the book Reinforcement Learning: An Introduction (By Sutton & Barto).
+This is a note for the book Reinforcement Learning: An Introduction 2nd Edition(By Sutton & Barto).
 These codes (will) include:
 + Solutions to exercise problems
 + The code generating each figure in the book.
@@ -13,12 +13,13 @@ The solutions are in exercise_answers.md. PDF Release will be available soon.
 + tqdm == 4.49
 
 ### Specifications
-Usually, I choose 0 as random seed (as specified in code). This allow everyone to reproduce exactly the same results and figures as I did in this note.  
+Usually, I choose 0 as random seed (as specified in code). This allows everyone to reproduce the work exactly the same way as I did in this note.  
 I believe this, reproducibility, is of great importance when your own code is behaving strangely but you are not sure if it's a bug. 
 
 ### Examples
-1. ***Exercise 2.3*** In the comparison shown in Figure 2.2, which method will perform best in the long run in terms of cumulative reward and probability of selecting the best action? How much better will it be? Express your answer quantitatively.
-
+1. ***Exercise 2.3*** In the comparison shown in Figure 2.2, which method will perform best in the long run in terms of cumulative reward and probability of selecting the best action? How much better will it be? Express your answer quantitatively.  
+    ![fig 2.2](images/figure_2_2.png) 
+    
     ***Ans:***  
     The experiment is conducted with 10,000 iterations averaged by 1,000 runs and the epsilon=0.01 player performed best (see code for fig 2.2).  
     Reward Performance: ep=0.01 > ep=0.1 > ep=0  
@@ -31,7 +32,7 @@ Use a modified version of the 10-armed testbed in which all the q*(a) start out 
 Prepare plots like Figure 2.2 for an action-value method using sample averages, incrementally computed, and another action-value method using a constant step-size parameter, a = 0.1. Use epsilon = 0.1 and longer runs, say of 10,000 steps.
     
     ***Ans:***  
-    Experiments done by exercise_2_5.py  
+    Experiments are conducted in exercise_2_5.py  
     The lines inserted to Bandit.step for the non-stationary bandit implementation:  
     ``` python  
     # Nonstationary Bandit    
@@ -49,8 +50,8 @@ Prepare plots like Figure 2.2 for an action-value method using sample averages, 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
     ![exercise 2.5](images/exercise_2_5.png)
 
-    I also wrote another code exercise_2_5_SIMR.py for this exercise. 
-    The SIMR stands for **Single Iteration Multi Runs**. 
+    Unsatisfied with the simulation speed, I wrote a new version exercise_2_5_SIMR.py for this exercise prob. 
+    SIMR stands for **Single Iteration Multi Runs** (You know it's from SIMD in chips). 
     Instead of, in the original code, going all the way through a complete run one after another, 
     this version simultaneously operates multi-runs at each iteration, as if those runs are in parallel.  
     This allowed us to utilize the power of the optimized vector computation tools in numpy, and it actually
@@ -60,10 +61,10 @@ Prepare plots like Figure 2.2 for an action-value method using sample averages, 
 
 ### References
 The bulk part of the implementations are from:
-+ The exercise solutions (However, this part are somewhat outdated because the latest version of the book has covered a lot of new exercises). https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions
-+ The code for figures: https://github.com/ShangtongZhang/reinforcement-learning-an-introduction  
++ Solutions to exercise problems (However, this part are somewhat outdated because the latest version of the book has covered a lot of new exercises). https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions
++ Code for each figure in the book: https://github.com/ShangtongZhang/reinforcement-learning-an-introduction  
 
-For the figures, their usages can be accessed at *[Matplotlib Gallery](https://matplotlib.org/gallery/index.html)*
+For generating figures, usage and examples can be accessed at *[Matplotlib Gallery](https://matplotlib.org/gallery/index.html)*
 ### Finally
 Again, this serves mainly as a personal note for the book and it's still being rapidly updated because I'm, at the same time, trying to get familiar with the RL research area.  
 If you have any questions, feel free to contact me at brycechen1849@gmail.com .

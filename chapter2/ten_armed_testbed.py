@@ -141,7 +141,7 @@ def figure_2_1():
     plt.close()
 
 
-def figure_2_2(runs=2000, time=10000):
+def figure_2_2(runs=2000, time=1000):
     epsilons = [0, 0.1, 0.01]
     bandits = [Bandit(epsilon=eps, sample_averages=True) for eps in epsilons]
     best_action_counts, rewards = simulate(runs, time, bandits)
@@ -180,7 +180,8 @@ def figure_2_2(runs=2000, time=10000):
     plt.ylabel('% optimal action')
     plt.legend()
 
-    plt.savefig('../images/exercise_2_2_Non-stationary.png')
+    # plt.savefig('../images/exercise_2_2_Non-stationary.png')
+    plt.savefig('../images/figure_2_2.png')
     plt.close()
 
 
@@ -268,8 +269,8 @@ def figure_2_6(runs=2000, time=1000):
 
 if __name__ == '__main__':
     # figure_2_1()
-    # figure_2_2()
-    figure_2_3()
+    figure_2_2()
+    # figure_2_3()
     # figure_2_4()
     # figure_2_5()
     # figure_2_6()
