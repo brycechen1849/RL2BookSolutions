@@ -32,24 +32,34 @@ def exercise_2_2():
     # The alpha used in constant step-size setting.
     step_size = 0.1
 
-    np.random.seed(0)
-    start_time = time.time()
-    best_action_counts_sa, rewards_sa = single_iteration_multi_run(iterations, runs, k_arms, epsilon=epsilon)
-    end_time = time.time()
-    print("SIMR sample-average time elapsed: ", end_time - start_time)
+    new_experiment = False
 
-    np.save("../data/exercise_2_5_SIMR_epsilon_0-1_B.npy", best_action_counts_sa)
-    np.save("../data/exercise_2_5_SIMR_epsilon_0-1_R.npy", rewards_sa)
+    if new_experiment:
+        np.random.seed(0)
+        start_time = time.time()
+        best_action_counts_sa, rewards_sa = single_iteration_multi_run(iterations, runs, k_arms, epsilon=epsilon)
+        end_time = time.time()
+        print("SIMR sample-average time elapsed: ", end_time - start_time)
 
-    np.random.seed(0)
-    start_time = time.time()
-    best_action_counts_const, rewards_const = single_iteration_multi_run(iterations, runs, k_arms, step_size=step_size,
-                                                                         epsilon=epsilon)
-    end_time = time.time()
-    print("SIMR constant step size time elapsed: ", end_time - start_time)
+        np.save("../data/exercise_2_5_SIMR_epsilon_0-1_B.npy", best_action_counts_sa)
+        np.save("../data/exercise_2_5_SIMR_epsilon_0-1_R.npy", rewards_sa)
 
-    np.save("../data/exercise_2_5_SIMR_const_a_0-1_B.npy", best_action_counts_const)
-    np.save("../data/exercise_2_5_SIMR_const_a_0-1_R.npy", rewards_const)
+        np.random.seed(0)
+        start_time = time.time()
+        best_action_counts_const, rewards_const = single_iteration_multi_run(iterations, runs, k_arms,
+                                                                             step_size=step_size,
+                                                                             epsilon=epsilon)
+        end_time = time.time()
+        print("SIMR constant step size time elapsed: ", end_time - start_time)
+
+        np.save("../data/exercise_2_5_SIMR_const_a_0-1_B.npy", best_action_counts_const)
+        np.save("../data/exercise_2_5_SIMR_const_a_0-1_R.npy", rewards_const)
+
+    else:
+        best_action_counts_const = np.load("../data/exercise_2_5_SIMR_const_a_0-1_B.npy")
+        rewards_const = np.load("../data/exercise_2_5_SIMR_const_a_0-1_R.npy")
+        best_action_counts_sa = np.load("../data/exercise_2_5_SIMR_epsilon_0-1_B.npy")
+        rewards_sa = np.load("../data/exercise_2_5_SIMR_epsilon_0-1_R.npy")
 
     plt.figure(figsize=(20, 10))
     plt.subplot(1, 2, 1)
@@ -63,8 +73,8 @@ def exercise_2_2():
 
     plt.subplot(1, 2, 2)
     plt.title("Selection of Sample Avg. VS Const alpha on non-stationary Bandits")
-    plt.plot(best_action_counts_const, label='sample average with epsilon = %.02f' % epsilon)
-    plt.plot(best_action_counts_sa, label='constant alpha = %.02f ,epsilon = %.02f' % (step_size, epsilon))
+    plt.plot(best_action_counts_sa, label='sample average with epsilon = %.02f' % epsilon)
+    plt.plot(best_action_counts_const, label='constant alpha = %.02f ,epsilon = %.02f' % (step_size, epsilon))
     plt.xlabel('steps')
     plt.ylabel('% optimal action')
     plt.legend()
@@ -100,11 +110,13 @@ def single_iteration_multi_run(iterations=100, runs=20, k_arms=10, epsilon=None,
         # Why not just directly use argmax here?
         # If there are more than one options that are simultaneously max,
         # we still want to randomly choose among these options.
-        max_estimate_value = np.max(Q[run_range, :], axis=1, keepdims=True)
-        greedy_actions = np.ndarray(shape=(runs,))
-        for run in range(runs):
-            best_actions = np.where(Q[run, :] == max_estimate_value[run])[0]
-            greedy_actions[run] = np.random.choice(best_actions)
+
+        # max_estimate_value = np.max(Q[run_range, :], axis=1, keepdims=True)
+        # greedy_actions = np.ndarray(shape=(runs,))
+        # for run in range(runs):
+        #     best_actions = np.where(Q[run, :] == max_estimate_value[run])[0]
+        #     greedy_actions[run] = np.random.choice(best_actions)
+        greedy_actions = np.argmax(Q, axis=1)
 
         # Construct exploratory actions
         exploratory_actions = np.ndarray(shape=(runs,))
