@@ -4,8 +4,9 @@ These codes (will) include:
 + Solutions to exercise problems
 + The code generating each figure in the book.
 
-PDF Release will soon be available once I finished the note. 
-[Web Release](https://brycechen1849.github.io/RL2BookSolutions/solutions) is available and it should server the purpose
+### Solutions
++ PDF Release will soon be available once I finished the note. 
++ [Web Release](https://brycechen1849.github.io/RL2BookSolutions/solutions) is available and it should serve the purpose
 well enough :D
 
 ### Dependencies
