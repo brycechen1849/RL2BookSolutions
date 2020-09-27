@@ -41,11 +41,10 @@ class Bandit:
         self.epsilon = epsilon
         self.initial = initial
 
+    # real reward for each action
     def reset(self):
-        # real reward for each action
         # np.random.rand (normal distribution on a ndarray)
-        # Parameters
-        #             ----------
+        # Parameters ----------
         #             d0, d1, ..., dn : int, optional
         #                 The dimensions of the returned array, must be non-negative.
         #                 If no argument is given a single Python float is returned
@@ -87,18 +86,22 @@ class Bandit:
         reward = np.random.randn() + self.q_true[action]
         self.time += 1
         self.action_count[action] += 1
+
+        # This is the incremental computation for average reward talked in the book.
         self.average_reward += (reward - self.average_reward) / self.time
 
         if self.sample_averages:
             # update estimation using sample averages
             self.q_estimation[action] += (reward - self.q_estimation[action]) / self.action_count[action]
         elif self.gradient:
+            # update estimation using gradient ascend
             one_hot = np.zeros(self.k)
             one_hot[action] = 1
             if self.gradient_baseline:
                 baseline = self.average_reward
             else:
                 baseline = 0
+            # The name is not estimation actually, it should be preference as described in the book
             self.q_estimation += self.step_size * (reward - baseline) * (one_hot - self.action_prob)
         else:
             # update estimation with constant step size
@@ -106,6 +109,7 @@ class Bandit:
         return reward
 
 
+# The experiment group that corresponds to a figure.
 def simulate(runs, time, bandits):
     rewards = np.zeros((len(bandits), runs, time))
     best_action_counts = np.zeros(rewards.shape)
@@ -120,6 +124,8 @@ def simulate(runs, time, bandits):
                     best_action_counts[i, r, t] = 1
     mean_best_action_counts = best_action_counts.mean(axis=1)
     mean_rewards = rewards.mean(axis=1)
+    # It's recommend that we save raw results of each parameter setting of the experiment:
+    # + in case of being unexpectedly interrupted during the experiments, it would be possible to resume the work
     return mean_best_action_counts, mean_rewards
 
 
@@ -139,6 +145,24 @@ def figure_2_2(runs=2000, time=1000):
     plt.figure(figsize=(10, 20))
 
     plt.subplot(2, 1, 1)
+    """
+    Subplot
+    *args : int, (int, int, *index*), or `.SubplotSpec`, default: (1, 1, 1)
+        The position of the subplot described by one of
+
+        - Three integers (*nrows*, *ncols*, *index*). The subplot will take the
+          *index* position on a grid with *nrows* rows and *ncols* columns.
+          *index* starts at 1 in the upper left corner and increases to the
+          right. *index* can also be a two-tuple specifying the (*first*,
+          *last*) indices (1-based, and including *last*) of the subplot, e.g.,
+          ``fig.add_subplot(3, 1, (1, 2))`` makes a subplot that spans the
+          upper 2/3 of the figure.
+        - A 3-digit integer. The digits are interpreted as if given separately
+          as three single-digit integers, i.e. ``fig.add_subplot(235)`` is the
+          same as ``fig.add_subplot(2, 3, 5)``. Note that this can only be used
+          if there are no more than 9 subplots.
+        - A `.SubplotSpec`.
+    """
     for eps, rewards in zip(epsilons, rewards):
         plt.plot(rewards, label='epsilon = %.02f' % eps)
     plt.xlabel('steps')
