@@ -4,6 +4,8 @@ These codes (will) include:
 + Solutions to exercise problems
 + The code generating each figure in the book.
 
+The solutions are in exercise_answers.md. PDF Release will be available soon.
+
 ### Dependencies
 + I use Python 3.6 installed via Anaconda environment on OSX 10.15.6. Other Python versions or system platforms are not tested yet, but it would be on theory working.
 + numpy == 1.19
@@ -19,8 +21,7 @@ These codes (will) include:
     Select Performance: ep=0.01 > ep=0.1 > ep=0
     ![exercise 2.2](images/exercise_2_2.png)    
 
-1. ***Exercise 2.5 (programming)***  
-Design and conduct an experiment to demonstrate the diffculties that sample-average methods have for nonstationary problems. 
+1. ***Exercise 2.5 (programming)***  Design and conduct an experiment to demonstrate the diffculties that sample-average methods have for nonstationary problems. 
 Use a modified version of the 10-armed testbed in which all the q*(a) start out equal and then take independent random walks
  (say by adding a normally distributed increment with mean zero and standard deviation 0.01 to all the q*(a) on each step).
 Prepare plots like Figure 2.2 for an action-value method using sample averages, incrementally computed, and another action-value method using a constant step-size parameter, a = 0.1. Use epsilon = 0.1 and longer runs, say of 10,000 steps.
@@ -28,15 +29,19 @@ Prepare plots like Figure 2.2 for an action-value method using sample averages, 
     ***Ans:***  
     Experiments done by exercise_2_5.py  
     The lines inserted to Bandit.step for the non-stationary bandit implementation:  
-    `# Nonstationary Bandit`  
-    `self.q_true += np.random.normal(loc=0, scale=0.01, size=(self.k,))`
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+    ```python  
+    # Nonstationary Bandit    
+    self.q_true += np.random.normal(loc=0, scale=0.01, size=(self.k,))
+    ```   
+    constant step size way outperformed the sample average way in terms of average return.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
    ![exercise 2.5](images/exercise_2_5.png)
 ### References
 The bulk part of the implementations are from:
 + The exercise solutions (However, this part are somewhat outdated because the latest version of the book has covered a lot of new exercises). https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions
-+ The code for figures: https://github.com/ShangtongZhang/reinforcement-learning-an-introduction
++ The code for figures: https://github.com/ShangtongZhang/reinforcement-learning-an-introduction  
 
+For the figures, their usages can be accessed at *[Matplotlib Gallery](https://matplotlib.org/gallery/index.html)*
 ### Finally
-Again, this serves mainly as a personal note for the book and it's still being updated becuase I'm, at the same time, trying to get familiar with the RL research area.  
+Again, this serves mainly as a personal note for the book and it's still being rapidly updated because I'm, at the same time, trying to get familiar with the RL research area.  
 If you have any questions, feel free to contact me at brycechen1849@gmail.com .
