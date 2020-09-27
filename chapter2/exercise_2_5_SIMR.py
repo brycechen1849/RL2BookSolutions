@@ -32,7 +32,7 @@ def exercise_2_2():
     # The alpha used in constant step-size setting.
     step_size = 0.1
 
-    new_experiment = False
+    new_experiment = True
 
     if new_experiment:
         np.random.seed(0)
@@ -111,12 +111,13 @@ def single_iteration_multi_run(iterations=100, runs=20, k_arms=10, epsilon=None,
         # If there are more than one options that are simultaneously max,
         # we still want to randomly choose among these options.
 
-        # max_estimate_value = np.max(Q[run_range, :], axis=1, keepdims=True)
-        # greedy_actions = np.ndarray(shape=(runs,))
-        # for run in range(runs):
-        #     best_actions = np.where(Q[run, :] == max_estimate_value[run])[0]
-        #     greedy_actions[run] = np.random.choice(best_actions)
-        greedy_actions = np.argmax(Q, axis=1)
+        # greedy_actions = np.argmax(Q, axis=1)
+
+        max_estimate_value = np.max(Q[run_range, :], axis=1, keepdims=True)
+        greedy_actions = np.ndarray(shape=(runs,))
+        for run in range(runs):
+            best_actions = np.where(Q[run, :] == max_estimate_value[run])[0]
+            greedy_actions[run] = np.random.choice(best_actions)
 
         # Construct exploratory actions
         exploratory_actions = np.ndarray(shape=(runs,))

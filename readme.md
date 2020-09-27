@@ -34,9 +34,19 @@ Prepare plots like Figure 2.2 for an action-value method using sample averages, 
     self.q_true += np.random.normal(loc=0, scale=0.01, size=(self.k,))
     self.best_action = np.argmax(self.q_true)
     ```   
-    The constant step-size method outperformed the sample average method in terms of both average return and best action hit rate.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+    The constant step-size method outperformed the sample average method in terms of both average reward and best action hit rate.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-   ![exercise 2.5](images/exercise_2_5.png)
+    ![exercise 2.5](images/exercise_2_5.png)
+
+    I also wrote another code exercise_2_5_SIMR.py for this exercise. 
+    The SIMR stands for Single Iteration Multi Runs. 
+    Instead of, in the original code, going all the way through a complete run one after another, 
+    this version simultaneously operates multi-runs at each iteration, as if those runs are in parallel.  
+    This allowed us to utilize the power of the optimized vector computation tools in numpy, and It actually
+    get around 8x faster than the first code implementation.
+    
+    ![exercise 2.5 SIMR](images/exercise_2_5_SIMR.png)
+
 ### References
 The bulk part of the implementations are from:
 + The exercise solutions (However, this part are somewhat outdated because the latest version of the book has covered a lot of new exercises). https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions
