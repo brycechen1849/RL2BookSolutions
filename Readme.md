@@ -1,5 +1,5 @@
 ### Introduction 
-This is personal notes for the book Reinforcement Learning: A Introduction (By Sutton & Bartol).
+This is personal notes for the book Reinforcement Learning: An Introduction (By Sutton & Bartol).
 These codes (will) include:
 + Solutions to exercise problems
 + The code generating each figure in the book.
