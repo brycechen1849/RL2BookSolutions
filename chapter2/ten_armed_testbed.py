@@ -126,6 +126,9 @@ def simulate(runs, time, bandits):
     mean_rewards = rewards.mean(axis=1)
     # It's recommend that we save raw results of each parameter setting of the experiment:
     # + in case of being unexpectedly interrupted during the experiments, it would be possible to resume the work
+    np.save("../data/exercise_2_2_Non-stationary_B.npy", mean_best_action_counts)
+    np.save("../data/exercise_2_2_Non-stationary_R.npy", mean_rewards)
+
     return mean_best_action_counts, mean_rewards
 
 
@@ -137,7 +140,7 @@ def figure_2_1():
     plt.close()
 
 
-def figure_2_2(runs=1000, time=10000):
+def figure_2_2(runs=2000, time=10000):
     epsilons = [0, 0.1, 0.01]
     bandits = [Bandit(epsilon=eps, sample_averages=True) for eps in epsilons]
     best_action_counts, rewards = simulate(runs, time, bandits)
@@ -176,7 +179,7 @@ def figure_2_2(runs=1000, time=10000):
     plt.ylabel('% optimal action')
     plt.legend()
 
-    plt.savefig('../images/exercise_2_2.png')
+    plt.savefig('../images/exercise_2_2_Non-stationary.png')
     plt.close()
 
 
