@@ -137,14 +137,14 @@ def figure_2_1():
     plt.close()
 
 
-def figure_2_2(runs=2000, time=1000):
+def figure_2_2(runs=1000, time=10000):
     epsilons = [0, 0.1, 0.01]
     bandits = [Bandit(epsilon=eps, sample_averages=True) for eps in epsilons]
     best_action_counts, rewards = simulate(runs, time, bandits)
 
-    plt.figure(figsize=(10, 20))
+    plt.figure(figsize=(20, 10))
 
-    plt.subplot(2, 1, 1)
+    plt.subplot(1, 2, 1)
     """
     Subplot
     *args : int, (int, int, *index*), or `.SubplotSpec`, default: (1, 1, 1)
@@ -169,14 +169,14 @@ def figure_2_2(runs=2000, time=1000):
     plt.ylabel('average reward')
     plt.legend()
 
-    plt.subplot(2, 1, 2)
+    plt.subplot(1, 2, 2)
     for eps, counts in zip(epsilons, best_action_counts):
         plt.plot(counts, label='epsilon = %.02f' % eps)
     plt.xlabel('steps')
     plt.ylabel('% optimal action')
     plt.legend()
 
-    plt.savefig('../images/figure_2_2.png')
+    plt.savefig('../images/exercise_2_2.png')
     plt.close()
 
 
@@ -264,8 +264,8 @@ def figure_2_6(runs=2000, time=1000):
 
 if __name__ == '__main__':
     # figure_2_1()
-    # figure_2_2()
+    figure_2_2()
     # figure_2_3()
-    figure_2_4()
+    # figure_2_4()
     # figure_2_5()
     # figure_2_6()
