@@ -4,7 +4,9 @@ These codes (will) include:
 + Solutions to exercise problems
 + The code generating each figure in the book.
 
-The solutions are in exercise_answers.md. PDF Release will be available soon.
+PDF Release will soon be available once I finished the note. 
+[Web Release](https://brycechen1849.github.io/RL2BookSolutions/solutions) is available and it should server the purpose
+well enough :D
 
 ### Dependencies
 + I use Python 3.6 installed via Anaconda environment on OSX 10.15.6. Other Python versions or system platforms are not tested yet, but it would be on theory working.
@@ -64,7 +66,7 @@ The bulk part of the implementations are from:
 + Solutions to exercise problems (However, this part are somewhat outdated because the latest version of the book has covered a lot of new exercises). https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions
 + Code for each figure in the book: https://github.com/ShangtongZhang/reinforcement-learning-an-introduction  
 
-For generating figures, usage and examples can be accessed at *[Matplotlib Gallery](https://matplotlib.org/gallery/index.html)*
+For figures, usage and examples can be accessed at *[Matplotlib Gallery](https://matplotlib.org/gallery/index.html)*
 ### Finally
 Again, this serves mainly as a personal note for the book and it's still being rapidly updated because I'm, at the same time, trying to get familiar with the RL research area.  
 If you have any questions, feel free to contact me at brycechen1849@gmail.com .
