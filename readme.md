@@ -13,7 +13,7 @@ The solutions are in exercise_answers.md. PDF Release will be available soon.
 + tqdm == 4.49
 
 ### Specifications
-Usually, I choose 0 as random seed (as specified in code). This allows everyone to reproduce the work exactly the same way as I did in this note.  
+Usually, **random seed = 0** (as specified in code). This allows everyone to reproduce the work exactly the same way as I did in this note.  
 I believe this, reproducibility, is of great importance when your own code is behaving strangely but you are not sure if it's a bug. 
 
 ### Examples
@@ -21,7 +21,7 @@ I believe this, reproducibility, is of great importance when your own code is be
     ![fig 2.2](images/figure_2_2.png) 
     
     ***Ans:***  
-    The experiment is conducted with 10,000 iterations averaged by 1,000 runs and the epsilon=0.01 player performed best (see code for fig 2.2).  
+    The experiment is conducted with 10,000 iterations averaged by 2,000 runs and the epsilon=0.01 player performed best (see code for fig 2.2).  
     Reward Performance: ep=0.01 > ep=0.1 > ep=0  
     Select Performance: ep=0.01 > ep=0.1 > ep=0
     ![exercise 2.2](images/exercise_2_2.png)    
