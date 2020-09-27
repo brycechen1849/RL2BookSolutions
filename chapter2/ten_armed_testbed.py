@@ -126,8 +126,8 @@ def simulate(runs, time, bandits):
     mean_rewards = rewards.mean(axis=1)
     # It's recommend that we save raw results of each parameter setting of the experiment:
     # + in case of being unexpectedly interrupted during the experiments, it would be possible to resume the work
-    np.save("../data/exercise_2_2_Non-stationary_B.npy", mean_best_action_counts)
-    np.save("../data/exercise_2_2_Non-stationary_R.npy", mean_rewards)
+    np.save("../data/exercise_2_2_B.npy", mean_best_action_counts)
+    np.save("../data/exercise_2_2_R.npy", mean_rewards)
 
     return mean_best_action_counts, mean_rewards
 

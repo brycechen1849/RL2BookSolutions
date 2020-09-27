@@ -1,6 +1,8 @@
 #######################################################################
 # Copyright (C)                                                       #
 # 2018 - 2020 Bryce Chen (brycechen1849@gmail.com)                    #
+# Date created: 2020/09/27                                            #
+# Description : Simulation code for exercise 2.5                    #
 # Permission given to modify the code as long as you keep this        #
 # declaration at the top                                              #
 #######################################################################
@@ -41,15 +43,14 @@ class NonstationaryBandit:
     def reset(self):
         # np.random.rand (normal distribution on a ndarray)
         # Parameters ----------
-        #             d0, d1, ..., dn : int, optional
-        #                 The dimensions of the returned array, must be non-negative.
-        #                 If no argument is given a single Python float is returned
+        # d0, d1, ..., dn : int, optional
+        #   The dimensions of the returned array, must be non-negative.
+        #   If no argument is given a single Python float is returned
         self.q_true = np.random.randn(self.k) + self.true_reward
         # estimation for each action
         self.q_estimation = np.zeros(self.k) + self.initial
         # number of chosen times for each action
         self.action_count = np.zeros(self.k)
-        self.best_action = np.argmax(self.q_true)
         self.time = 0
 
     # Get an action for this bandit
@@ -81,6 +82,7 @@ class NonstationaryBandit:
 
         #  Nonstationary Bandit
         self.q_true += np.random.normal(loc=0, scale=0.01, size=(self.k,))
+        self.best_action = np.argmax(self.q_true)
 
         # generate the reward under N(real reward, 1)
         reward = np.random.randn() + self.q_true[action]
@@ -126,6 +128,9 @@ def simulate(runs, time, bandits):
     mean_rewards = rewards.mean(axis=1)
     # It's recommend that we save raw results of each parameter setting of the experiment:
     # + in case of being unexpectedly interrupted during the experiments, it would be possible to resume the work
+    np.save("../data/exercise_2_5_Non-stationary_B.npy", mean_best_action_counts)
+    np.save("../data/exercise_2_5_Non-stationary_R.npy", mean_rewards)
+
     return mean_best_action_counts, mean_rewards
 
 
@@ -162,4 +167,3 @@ def exercise_2_2(runs=2000, time=10000):
 
 if __name__ == '__main__':
     exercise_2_2()
-    # print("SIMR time eplased: ", end_time - start_time)
