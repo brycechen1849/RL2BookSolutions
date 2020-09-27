@@ -4,13 +4,19 @@ These codes (will) include:
 + Solutions to exercise problems
 + The code generating each figure in the book.
 
-### Examples
-***Exercise 2.3*** In the comparison shown in Figure 2.2, which method will perform best in the long run in terms of cumulative reward and probability of selecting the best action? How much better will it be? Express your answer quantitatively.
+### Dependencies
++ I use Python 3.6 installed via Anaconda environment on OSX 10.15.6. Other Python versions or system platforms are not tested yet, but it would be on theory working.
++ numpy == 1.19
++ matplotlib == 3.3.1
++ tqdm == 4.49
 
-***Ans:***  
+### Examples
+1. ***Exercise 2.3*** In the comparison shown in Figure 2.2, which method will perform best in the long run in terms of cumulative reward and probability of selecting the best action? How much better will it be? Express your answer quantitatively.
+
+    ***Ans:***  
     The experiment is conducted with 10,000 iterations averaged by 1,000 runs and the epsilon=0.01 player performed best (see code for fig 2.2).  
-    Reward Performance: ep=0.01 > ep=0.1 > ep=0
-    Selection Performance: ep=0.01 > ep=0.1 > ep=0
+    Reward Performance: ep=0.01 > ep=0.1 > ep=0  
+    Select Performance: ep=0.01 > ep=0.1 > ep=0
     ![exercise 2.2](images/exercise_2_2.png)    
 
 ### References
