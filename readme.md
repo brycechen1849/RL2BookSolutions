@@ -5,8 +5,8 @@ These codes (will) include:
 + The code generating each figure in the book.
 
 ### Solutions
-+ PDF Release will soon be available once I finished the note. 
-+ [Web Release](https://brycechen1849.github.io/RL2BookSolutions/solutions) is available and it should serve the purpose
+PDF Release will soon be available once I finished the note.  
+[Web Release](https://brycechen1849.github.io/RL2BookSolutions/solutions) is available and it should serve the purpose
 well enough :D
 
 ### Dependencies
@@ -64,8 +64,9 @@ Prepare plots like Figure 2.2 for an action-value method using sample averages, 
 
 ### References
 The bulk part of the implementations are from:
-+ Solutions to exercise problems (However, this part are somewhat outdated because the latest version of the book has covered a lot of new exercises). https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions
-+ Code for each figure in the book: https://github.com/ShangtongZhang/reinforcement-learning-an-introduction  
++ Solutions to exercise problems (However, this part are somewhat outdated because the latest version of the book has covered a lot of new exercises):
+[Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
++ Code for each figure in the book: [reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)  
 
 For figures, usage and examples can be accessed at *[Matplotlib Gallery](https://matplotlib.org/gallery/index.html)*
 ### Finally
