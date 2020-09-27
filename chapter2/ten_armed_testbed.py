@@ -122,6 +122,7 @@ def simulate(runs, time, bandits):
                 rewards[i, r, t] = reward
                 if action == bandit.best_action:
                     best_action_counts[i, r, t] = 1
+
     mean_best_action_counts = best_action_counts.mean(axis=1)
     mean_rewards = rewards.mean(axis=1)
     # It's recommend that we save raw results of each parameter setting of the experiment:
@@ -267,8 +268,8 @@ def figure_2_6(runs=2000, time=1000):
 
 if __name__ == '__main__':
     # figure_2_1()
-    figure_2_2()
-    # figure_2_3()
+    # figure_2_2()
+    figure_2_3()
     # figure_2_4()
     # figure_2_5()
     # figure_2_6()

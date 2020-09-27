@@ -46,7 +46,10 @@ class NonstationaryBandit:
         # d0, d1, ..., dn : int, optional
         #   The dimensions of the returned array, must be non-negative.
         #   If no argument is given a single Python float is returned
-        self.q_true = np.random.randn(self.k) + self.true_reward
+
+        # self.q_true = np.random.randn(self.k) + self.true_reward
+        self.q_true = np.zeros(shape=(self.k,)) + self.true_reward
+
         # estimation for each action
         self.q_estimation = np.zeros(self.k) + self.initial
         # number of chosen times for each action
