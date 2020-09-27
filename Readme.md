@@ -10,4 +10,5 @@ The bulk part of the implementations are from:
 + The code for Figures: https://github.com/ShangtongZhang/reinforcement-learning-an-introduction
 
 ### Finally
-Again, this serves mainly as a personal note for the book and it's still being updated becuase I'm, at the same time, trying to get familiar with the RL research area.
+Again, this serves mainly as a personal note for the book and it's still being updated becuase I'm, at the same time, trying to get familiar with the RL research area.  
+If you have any questions, feel free to contact me at brycechen1849@gmail.com .
