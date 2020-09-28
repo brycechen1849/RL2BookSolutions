@@ -5,12 +5,12 @@ These codes (will) include:
 + The code generating each figure in the book.
 
 ### Solutions
-PDF Release will soon be available once I finished the note.  
-[Web release](https://brycechen1849.github.io/RL2BookSolutions/solutions) is available and it should serve the purpose
+[PDF Release](https://brycechen1849.github.io/RL2BookSolutions/pdf) will soon be available once I finished the note. 
+[Web hosted docs](https://brycechen1849.github.io/RL2BookSolutions/solutions) is available and it should serve the purpose
 well enough :D  
-+ [Chapter 1](https://brycechen1849.github.io/RL2BookSolutions/solution_ch1) exercise solutions   
-+ [Chapter 2](https://brycechen1849.github.io/RL2BookSolutions/solution_ch2) exercise solutions
-+ [Chapter 3](https://brycechen1849.github.io/RL2BookSolutions/solution_ch3) exercise solutions (in progress ...)
++ [Chapter 1](https://brycechen1849.github.io/RL2BookSolutions/solution_ch1) exercise solutions ⌛️ (deferred)
++ [Chapter 2](https://brycechen1849.github.io/RL2BookSolutions/solution_ch2) exercise solutions ☑️
++ [Chapter 3](https://brycechen1849.github.io/RL2BookSolutions/solution_ch3) exercise solutions 🏃 (in progress ...)
 + ...  
 
 ### Dependencies
