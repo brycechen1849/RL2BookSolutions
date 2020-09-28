@@ -167,11 +167,11 @@ def exercise_2_6(runs=2000, time=10000):
 
 
 def exercise_2_11(runs=100, time=20000):
-    new = True
+    new = False
     labels = ['epsilon-greedy', 'gradient bandit',
               'UCB', 'optimistic initialization']
     generators = [lambda epsilon: NonstationaryBandit(epsilon=epsilon, sample_averages=True),
-                  lambda alpha: NonstationaryBandit(epsilon=0.1, gradient=True, step_size=alpha,
+                  lambda alpha: NonstationaryBandit(epsilon=0, gradient=True, step_size=alpha,
                                                     gradient_baseline=True),
                   lambda coef: NonstationaryBandit(epsilon=0, UCB_param=coef, sample_averages=True),
                   lambda initial: NonstationaryBandit(epsilon=0, initial=initial, step_size=0.1)]
@@ -200,7 +200,7 @@ def exercise_2_11(runs=100, time=20000):
     #     return  x[:,w:]
     # rewards = moving_average(average_rewards, 1000)
 
-    rewards = np.mean(average_rewards[time // 2:], axis=1)
+    rewards = np.mean(average_rewards[:, time // 2:], axis=1)
     i = 0
     for label, parameter in zip(labels, parameters):
         l = len(parameter)
