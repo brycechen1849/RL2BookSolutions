@@ -64,7 +64,7 @@ Prepare plots like Figure 2.2 for an action-value method using sample averages, 
     gets around **8x faster** than the first implementation.
     
 ### References
-The bulk part of the implementations are from:
+The code implementations references are:
 + Solutions to exercise problems (However, this part are somewhat outdated because the latest version of the book has covered a lot of new exercises):
 [Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions](https://github.com/LyWangPX/Reinforcement-Learning-2nd-Edition-by-Sutton-Exercise-Solutions)
 + Code for each figure in the book: [reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)  
