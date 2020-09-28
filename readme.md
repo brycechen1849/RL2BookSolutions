@@ -5,9 +5,8 @@ These codes (will) include:
 + The code generating each figure in the book.
 
 ### Solutions
-[PDF Release](https://brycechen1849.github.io/RL2BookSolutions/pdf) will soon be available once I finished the note.  
-[Web hosted docs](https://brycechen1849.github.io/RL2BookSolutions/solutions) is available and it should serve the purpose
-well enough :D  
+[PDF Release](https://brycechen1849.github.io/RL2BookSolutions/pdf) will soon be available once I finished the note. 🚧   
+[Web hosted docs](https://brycechen1849.github.io/RL2BookSolutions/solutions) are available and I believe these should serve the purpose well enough :D     
 + [Chapter 1](https://brycechen1849.github.io/RL2BookSolutions/solution_ch1) exercise solutions ⌛️ (deferred)
 + [Chapter 2](https://brycechen1849.github.io/RL2BookSolutions/solution_ch2) exercise solutions ☑️
 + [Chapter 3](https://brycechen1849.github.io/RL2BookSolutions/solution_ch3) exercise solutions 🏃 (in progress ...)
@@ -55,7 +54,7 @@ Prepare plots like Figure 2.2 for an action-value method using sample averages, 
    
     The constant step-size method outperformed the sample average method in terms of both average reward and best action hit rate.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-    ![exercise 2.5](images/exercise_2_5.png)
+    ![exercise 2.5](images/exercise_2_5_SIMR.png)
 
     Unsatisfied with the simulation speed, I wrote a new version exercise_2_5_SIMR.py for this exercise prob. 
     SIMR stands for **Single Iteration Multi Runs** (You know it's from SIMD in chips). 
@@ -64,8 +63,6 @@ Prepare plots like Figure 2.2 for an action-value method using sample averages, 
     This allowed us to utilize the power of the optimized vector computation tools in numpy, and it actually
     gets around **8x faster** than the first implementation.
     
-    ![exercise 2.5 SIMR](images/exercise_2_5_SIMR.png)
-
 ### References
 The bulk part of the implementations are from:
 + Solutions to exercise problems (However, this part are somewhat outdated because the latest version of the book has covered a lot of new exercises):
