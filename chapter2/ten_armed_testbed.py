@@ -202,31 +202,31 @@ def figure_2_3(runs=2000, time=1000):
 
 def figure_2_4(runs=2000, time=1000):
     plt.figure(figsize=(20, 10))
-    new = True
+    new = False
     if new:
-        # bandits = [Bandit(epsilon=0, UCB_param=2, sample_averages=True),
-        #            Bandit(epsilon=0.1, sample_averages=True)]
-        # _, average_rewards = simulate(runs, time, bandits)
-        #
-        # plt.plot(average_rewards[0], label='UCB c = 2')
-        # plt.plot(average_rewards[1], label='epsilon greedy epsilon = 0.1')
-
-        bandits = [Bandit(epsilon=0, UCB_param=0.5, sample_averages=True),
-                   Bandit(epsilon=0, UCB_param=1, sample_averages=True),
-                   Bandit(epsilon=0, UCB_param=2, sample_averages=True),
-                   Bandit(epsilon=0, UCB_param=4, sample_averages=True)]
+        bandits = [Bandit(epsilon=0, UCB_param=2, sample_averages=True),
+                   Bandit(epsilon=0.1, sample_averages=True)]
         _, average_rewards = simulate(runs, time, bandits)
 
-        np.save("../data/exercise_2_4_R.npy", average_rewards)
 
+        # bandits = [Bandit(epsilon=0, UCB_param=0.5, sample_averages=True),
+        #            Bandit(epsilon=0, UCB_param=1, sample_averages=True),
+        #            Bandit(epsilon=0, UCB_param=2, sample_averages=True),
+        #            Bandit(epsilon=0, UCB_param=4, sample_averages=True)]
+        # _, average_rewards = simulate(runs, time, bandits)
+        #
+        np.save("../data/figure_2_4_R.npy", average_rewards)
     else:
-        average_rewards = np.load("../data/exercise_2_4_R.npy")
+        average_rewards = np.load("../data/figure_2_4_R.npy")
 
     plt.subplot(1, 2, 1)
-    plt.plot(average_rewards[0], label='UCB c = .5')
-    plt.plot(average_rewards[1], label='UCB c = 1')
-    plt.plot(average_rewards[2], label='UCB c = 2')
-    plt.plot(average_rewards[3], label='UCB c = 3')
+    plt.plot(average_rewards[0], label='UCB c = 2')
+    plt.plot(average_rewards[1], label='epsilon greedy epsilon = 0.1')
+
+    # plt.plot(average_rewards[0], label='UCB c = .5')
+    # plt.plot(average_rewards[1], label='UCB c = 1')
+    # plt.plot(average_rewards[2], label='UCB c = 2')
+    # plt.plot(average_rewards[3], label='UCB c = 3')
     plt.xlabel('Steps')
     plt.ylabel('Average reward')
     plt.title('Average reward of UCB sample average with different c')
@@ -234,15 +234,18 @@ def figure_2_4(runs=2000, time=1000):
 
     plt.subplot(1, 2, 2)
     sub_len = 30
-    plt.plot(average_rewards[0][:sub_len], label='UCB c = .5')
-    plt.plot(average_rewards[1][:sub_len], label='UCB c = 1')
-    plt.plot(average_rewards[2][:sub_len], label='UCB c = 2')
-    plt.plot(average_rewards[3][:sub_len], label='UCB c = 3')
+    plt.plot(average_rewards[0][:sub_len], label='UCB c = 2')
+    plt.plot(average_rewards[1][:sub_len], label='epsilon greedy epsilon = 0.1')
+    # plt.plot(average_rewards[0][:sub_len], label='UCB c = .5')
+    # plt.plot(average_rewards[1][:sub_len], label='UCB c = 1')
+    # plt.plot(average_rewards[2][:sub_len], label='UCB c = 2')
+    # plt.plot(average_rewards[3][:sub_len], label='UCB c = 3')
     plt.xlabel('Steps')
     plt.ylabel('Average reward')
     plt.title('Average reward of UCB sample average with different c (first 30 )')
     plt.legend()
-    plt.savefig('../images/exercise_2_4_First_30.png')
+    # plt.savefig('../images/exercise_2_4_First_30.png')
+    plt.savefig('../images/figure_2_4_First_30.png')
 
     plt.close()
 

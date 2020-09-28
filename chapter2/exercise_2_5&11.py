@@ -168,7 +168,7 @@ def exercise_2_6(runs=2000, time=10000):
     plt.close()
 
 
-def exercise_2_11(runs=2000, time=10000):
+def exercise_2_11(runs=2000, time=20000):
     new = True
     if new:
         labels = ['epsilon-greedy', 'gradient bandit',
@@ -192,6 +192,12 @@ def exercise_2_11(runs=2000, time=10000):
     else:
         average_rewards = np.load("../data/exercise_2_11_R.npy")
     rewards = np.mean(average_rewards, axis=1)
+
+    # use latest 10000 items moving average as measurement of performance.
+    def moving_average(x, w):
+        return np.convolve(x, np.ones(w), 'valid') / 1.0 * w
+
+    rewards = moving_average(rewards, 10000)
 
     i = 0
     for label, parameter in zip(labels, parameters):
