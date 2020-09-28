@@ -137,7 +137,7 @@ def simulate(runs, time, bandits):
     return mean_best_action_counts, mean_rewards
 
 
-def exercise_2_2(runs=2000, time=10000):
+def exercise_2_6(runs=2000, time=10000):
     epsilon = 0.1
     step_size = 0.1
     bandits = [NonstationaryBandit(epsilon=epsilon, sample_averages=True),
@@ -168,5 +168,44 @@ def exercise_2_2(runs=2000, time=10000):
     plt.close()
 
 
+def exercise_2_11(runs=2000, time=10000):
+    new = True
+    if new:
+        labels = ['epsilon-greedy', 'gradient bandit',
+                  'UCB', 'optimistic initialization']
+        generators = [lambda epsilon: NonstationaryBandit(epsilon=epsilon, sample_averages=True),
+                      lambda alpha: NonstationaryBandit(gradient=True, step_size=alpha, gradient_baseline=True),
+                      lambda coef: NonstationaryBandit(epsilon=0, UCB_param=coef, sample_averages=True),
+                      lambda initial: NonstationaryBandit(epsilon=0, initial=initial, step_size=0.1)]
+        parameters = [np.arange(-7, -1, dtype=np.float),
+                      np.arange(-5, 2, dtype=np.float),
+                      np.arange(-4, 3, dtype=np.float),
+                      np.arange(-2, 3, dtype=np.float)]
+
+        bandits = []
+        for generator, parameter in zip(generators, parameters):
+            for param in parameter:
+                bandits.append(generator(pow(2, param)))
+
+        _, average_rewards = simulate(runs, time, bandits)
+        np.save("../data/exercise_2_11_R.npy", average_rewards)
+    else:
+        average_rewards = np.load("../data/exercise_2_11_R.npy")
+    rewards = np.mean(average_rewards, axis=1)
+
+    i = 0
+    for label, parameter in zip(labels, parameters):
+        l = len(parameter)
+        plt.plot(parameter, rewards[i:i + l], label=label)
+        i += l
+    plt.xlabel('Parameter(2^x)')
+    plt.ylabel('Average reward')
+    plt.legend()
+
+    plt.savefig('../images/exercise_2_11_Non-stationary.png')
+    plt.close()
+
+
 if __name__ == '__main__':
-    exercise_2_2()
+    # exercise_2_6()
+    exercise_2_11()
