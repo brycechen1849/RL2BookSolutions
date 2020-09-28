@@ -131,8 +131,6 @@ def simulate(runs, time, bandits):
     mean_rewards = rewards.mean(axis=1)
     # It's recommend that we save raw results of each parameter setting of the experiment:
     # + in case of being unexpectedly interrupted during the experiments, it would be possible to resume the work
-    np.save("../data/exercise_2_5_Non-stationary_B.npy", mean_best_action_counts)
-    np.save("../data/exercise_2_5_Non-stationary_R.npy", mean_rewards)
 
     return mean_best_action_counts, mean_rewards
 
@@ -168,37 +166,41 @@ def exercise_2_6(runs=2000, time=10000):
     plt.close()
 
 
-def exercise_2_11(runs=2000, time=20000):
+def exercise_2_11(runs=100, time=20000):
     new = True
+    labels = ['epsilon-greedy', 'gradient bandit',
+              'UCB', 'optimistic initialization']
+    generators = [lambda epsilon: NonstationaryBandit(epsilon=epsilon, sample_averages=True),
+                  lambda alpha: NonstationaryBandit(epsilon=0.1, gradient=True, step_size=alpha,
+                                                    gradient_baseline=True),
+                  lambda coef: NonstationaryBandit(epsilon=0, UCB_param=coef, sample_averages=True),
+                  lambda initial: NonstationaryBandit(epsilon=0, initial=initial, step_size=0.1)]
+    parameters = [np.arange(-7, -1, dtype=np.float),
+                  np.arange(-5, 2, dtype=np.float),
+                  np.arange(-4, 3, dtype=np.float),
+                  np.arange(-2, 3, dtype=np.float)]
+
+    bandits = []
+    for generator, parameter in zip(generators, parameters):
+        for param in parameter:
+            bandits.append(generator(pow(2, param)))
+
     if new:
-        labels = ['epsilon-greedy', 'gradient bandit',
-                  'UCB', 'optimistic initialization']
-        generators = [lambda epsilon: NonstationaryBandit(epsilon=epsilon, sample_averages=True),
-                      lambda alpha: NonstationaryBandit(gradient=True, step_size=alpha, gradient_baseline=True),
-                      lambda coef: NonstationaryBandit(epsilon=0, UCB_param=coef, sample_averages=True),
-                      lambda initial: NonstationaryBandit(epsilon=0, initial=initial, step_size=0.1)]
-        parameters = [np.arange(-7, -1, dtype=np.float),
-                      np.arange(-5, 2, dtype=np.float),
-                      np.arange(-4, 3, dtype=np.float),
-                      np.arange(-2, 3, dtype=np.float)]
-
-        bandits = []
-        for generator, parameter in zip(generators, parameters):
-            for param in parameter:
-                bandits.append(generator(pow(2, param)))
-
         _, average_rewards = simulate(runs, time, bandits)
         np.save("../data/exercise_2_11_R.npy", average_rewards)
     else:
         average_rewards = np.load("../data/exercise_2_11_R.npy")
-    rewards = np.mean(average_rewards, axis=1)
 
-    # use latest 10000 items moving average as measurement of performance.
-    def moving_average(x, w):
-        return np.convolve(x, np.ones(w), 'valid') / 1.0 * w
+    # use latest 1000 items moving average as measurement of performance.
 
-    rewards = moving_average(rewards, 10000)
+    # def moving_average(x, w):
+    #     for p in range(x.shape[0]):
+    #         for i in range(w, 0, -1):
+    #             x[p, w + i - 1] = np.mean(x[p, i:i + w])
+    #     return  x[:,w:]
+    # rewards = moving_average(average_rewards, 1000)
 
+    rewards = np.mean(average_rewards[time // 2:], axis=1)
     i = 0
     for label, parameter in zip(labels, parameters):
         l = len(parameter)
