@@ -6,8 +6,12 @@ These codes (will) include:
 
 ### Solutions
 PDF Release will soon be available once I finished the note.  
-[Web Release](https://brycechen1849.github.io/RL2BookSolutions/solutions) is available and it should serve the purpose
-well enough :D
+[Web release](https://brycechen1849.github.io/RL2BookSolutions/solutions) is available and it should serve the purpose
+well enough :D  
++ [Chapter 1](https://brycechen1849.github.io/RL2BookSolutions/solution_ch1) exercise solutions   
++ [Chapter 2](https://brycechen1849.github.io/RL2BookSolutions/solution_ch2) exercise solutions
++ [Chapter 3](https://brycechen1849.github.io/RL2BookSolutions/solution_ch3) exercise solutions (in progress ...)
++ ...  
 
 ### Dependencies
 + I use Python 3.6 installed via Anaconda environment on OSX 10.15.6. Other Python versions or system platforms are not tested yet, but it would be on theory working.
