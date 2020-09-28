@@ -3,9 +3,6 @@
 # Description : Simulation code for exercise 2.5                      #
 # 2018 - 2020 Bryce Chen (brycechen1849@gmail.com)                    #
 # Date created: 2020/09/27                                            #
-# 2016 Jan Hakenberg(jan.hakenberg@gmail.com)                         #
-# 2016 Tian Jun(tianjun.cpp@gmail.com)                                #
-# 2016 Kenta Shimada(hyperkentakun@gmail.com)                         #
 # Permission given to modify the code as long as you keep this        #
 # declaration at the top                                              #
 # #####################################################################

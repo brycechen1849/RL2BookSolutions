@@ -8,7 +8,7 @@ These codes (will) include:
 [PDF Release](https://brycechen1849.github.io/RL2BookSolutions/pdf) will soon be available once I finished the note. 🚧   
 [Web hosted docs](https://brycechen1849.github.io/RL2BookSolutions/solutions) are available and I believe these should serve the purpose well enough :D     
 + [Chapter 1](https://brycechen1849.github.io/RL2BookSolutions/solution_ch1) exercise solutions ⌛️ (deferred)
-+ [Chapter 2](https://brycechen1849.github.io/RL2BookSolutions/solution_ch2) exercise solutions ☑️
++ [Chapter 2](https://brycechen1849.github.io/RL2BookSolutions/solution_ch2) exercise solutions ☑️ 
 + [Chapter 3](https://brycechen1849.github.io/RL2BookSolutions/solution_ch3) exercise solutions 🏃 (in progress ...)
 + ...  
 

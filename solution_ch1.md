@@ -16,8 +16,8 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 
 ### Chapter 1
 
-Chapter 1 is an introductory one with tic-tac-toe game as an example of the full story. 
-It involves more advanced topics of reinforcement learning problem that I would choose to implement the full setting when I finished later chapters.
+Chapter 1 is an introductory chapter with ***tic-tac-toe*** game as an example of the full story. 
+It involves more advanced topics on reinforcement learning that I would choose to implement when later chapters are finished.
 (Although there is a implementation of the full simulation in tic-tac-toe.py)
 1. ***Exercise 1.1***
 1. ***Exercise 1.2***
