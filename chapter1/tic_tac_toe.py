@@ -28,6 +28,7 @@ class State:
         self.end = None
 
     # compute the hash value for one state, it's unique
+    # Hashval is represented by a trinomial number, actions in cell corresponds to 0, 1, and 2.
     def hash(self):
         if self.hash_val is None:
             self.hash_val = 0
@@ -36,6 +37,7 @@ class State:
         return self.hash_val
 
     # check whether a player has won the game, or it's a tie
+    # There are 4 types for a state, namely not end / 1 win / -1 win / tie.
     def is_end(self):
         if self.end is not None:
             return self.end
@@ -79,6 +81,7 @@ class State:
 
     # @symbol: 1 or -1
     # put chessman symbol in position (i, j)
+    # A new state is hatched from this state as return value
     def next_state(self, i, j, symbol):
         new_state = State()
         new_state.data = np.copy(self.data)
@@ -102,6 +105,8 @@ class State:
         print('-------------')
 
 
+# From current state, recursively searches (DFS, Depth-first search with a cached memory)
+# for all possible subsequent states.
 def get_all_states_impl(current_state, current_symbol, all_states):
     for i in range(BOARD_ROWS):
         for j in range(BOARD_COLS):
@@ -115,6 +120,7 @@ def get_all_states_impl(current_state, current_symbol, all_states):
                         get_all_states_impl(new_state, -current_symbol, all_states)
 
 
+# Use the function above to search all possible states with player 1 go first.
 def get_all_states():
     current_symbol = 1
     current_state = State()
@@ -128,7 +134,8 @@ def get_all_states():
 all_states = get_all_states()
 
 
-class Judger:
+# Judge is the a scheduler that bring all components together to accomplish the simulation.
+class Judge:
     # @player1: the player who will move first, its chessman will be 1
     # @player2: another player with a chessman -1
     def __init__(self, player1, player2):
@@ -188,10 +195,14 @@ class Player:
         self.states = []
         self.greedy = []
 
+    # states is a collection of all states in a rollout (episode, or a single chess game)
+    # Which would be assigned credit (win or loose) to when game is finished
+    # A record of greedy is also needed because if it's False, we don't update the estimations(But why?)
     def set_state(self, state):
         self.states.append(state)
         self.greedy.append(True)
 
+    # This sets not only symbol of the player, but also initial estimations of winning chance.
     def set_symbol(self, symbol):
         self.symbol = symbol
         for hash_val in all_states:
@@ -214,7 +225,7 @@ class Player:
         for i in reversed(range(len(states) - 1)):
             state = states[i]
             td_error = self.greedy[i] * (
-                self.estimations[states[i + 1]] - self.estimations[state]
+                    self.estimations[states[i + 1]] - self.estimations[state]
             )
             self.estimations[state] += self.step_size * td_error
 
@@ -223,6 +234,7 @@ class Player:
         state = self.states[-1]
         next_states = []
         next_positions = []
+        # Search for possible next state to put a chessman on.
         for i in range(BOARD_ROWS):
             for j in range(BOARD_COLS):
                 if state.data[i, j] == 0:
@@ -230,12 +242,15 @@ class Player:
                     next_states.append(state.next_state(
                         i, j, self.symbol).hash())
 
+        # epsilon greedy way of choosing an action.
         if np.random.rand() < self.epsilon:
             action = next_positions[np.random.randint(len(next_positions))]
             action.append(self.symbol)
             self.greedy[-1] = False
+            # BE WARE OF THE FUNCTION EXITS!
             return action
 
+        # An action is a pair of (x,y) coordinate.
         values = []
         for hash_val, pos in zip(next_states, next_positions):
             values.append((self.estimations[hash_val], pos))
@@ -247,11 +262,11 @@ class Player:
         return action
 
     def save_policy(self):
-        with open('policy_%s.bin' % ('first' if self.symbol == 1 else 'second'), 'wb') as f:
+        with open('../data/tic-tac-toe_policy_%s.bin' % ('first' if self.symbol == 1 else 'second'), 'wb') as f:
             pickle.dump(self.estimations, f)
 
     def load_policy(self):
-        with open('policy_%s.bin' % ('first' if self.symbol == 1 else 'second'), 'rb') as f:
+        with open('../data/tic-tac-toe_policy_%s.bin' % ('first' if self.symbol == 1 else 'second'), 'rb') as f:
             self.estimations = pickle.load(f)
 
 
@@ -287,40 +302,40 @@ class HumanPlayer:
 def train(epochs, print_every_n=500):
     player1 = Player(epsilon=0.01)
     player2 = Player(epsilon=0.01)
-    judger = Judger(player1, player2)
+    judge = Judge(player1, player2)
     player1_win = 0.0
     player2_win = 0.0
     for i in range(1, epochs + 1):
-        winner = judger.play(print_state=False)
+        winner = judge.play(print_state=False)
         if winner == 1:
             player1_win += 1
         if winner == -1:
             player2_win += 1
         if i % print_every_n == 0:
-            print('Epoch %d, player 1 winrate: %.02f, player 2 winrate: %.02f' % (i, player1_win / i, player2_win / i))
+            print('Epoch %d, player 1 win rate: %.02f, player 2 win rate: %.02f' % (i, player1_win / i, player2_win / i))
         player1.backup()
         player2.backup()
-        judger.reset()
+        judge.reset()
     player1.save_policy()
     player2.save_policy()
 
 
 def compete(turns):
     player1 = Player(epsilon=0)
-    player2 = Player(epsilon=0)
-    judger = Judger(player1, player2)
+    player2 = Player(epsilon=0.1)
+    judge = Judge(player1, player2)
     player1.load_policy()
     player2.load_policy()
     player1_win = 0.0
     player2_win = 0.0
     for _ in range(turns):
-        winner = judger.play()
+        winner = judge.play()
         if winner == 1:
             player1_win += 1
         if winner == -1:
             player2_win += 1
-        judger.reset()
-    print('%d turns, player 1 win %.02f, player 2 win %.02f' % (turns, player1_win / turns, player2_win / turns))
+        judge.reset()
+    print('%d turns, player 1 win %.05f, player 2 win %.05f' % (turns, player1_win / turns, player2_win / turns))
 
 
 # The game is a zero sum game. If both players are playing with an optimal strategy, every game will end in a tie.
@@ -329,9 +344,9 @@ def play():
     while True:
         player1 = HumanPlayer()
         player2 = Player(epsilon=0)
-        judger = Judger(player1, player2)
+        judge = Judge(player1, player2)
         player2.load_policy()
-        winner = judger.play()
+        winner = judge.play()
         if winner == player2.symbol:
             print("You lose!")
         elif winner == player1.symbol:
@@ -341,6 +356,6 @@ def play():
 
 
 if __name__ == '__main__':
-    train(int(1e5))
+    # train(int(1e5))
     compete(int(1e3))
-    #play()
+    # play()
