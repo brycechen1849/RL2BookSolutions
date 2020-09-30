@@ -38,6 +38,8 @@ It involves more advanced topics on reinforcement learning that I would choose t
 1. ***Exercise 1.2 Symmetries*** Many tic-tac-toe positions appear different but are really the same because of symmetries. How might we amend the learning process described above to take advantage of this? In what ways would this change improve the learning process? Now think again. Suppose the opponent did not take advantage of symmetries. In that case, should we? Is it true, then, that symmetrically equivalent positions should necessarily have the same value?
     
     ***Ans:***
+    In theory, using symmetries won't provide any improvement on performance. The only good thing is that it need less memory to store estimations that consists of all possible states.
+    It might even get performance degrade if the opponent do not use symmetries. In that case, players using symmetries would have less information about the state than players that treat them differently, thus the estimations would be less accurate than I should have been.
     
 1. ***Exercise 1.3  Greedy Play*** Suppose the reinforcement learning player was greedy, that is, it always played the move that brought it to the position that it rated the best. Might it learn to play better, or worse, than a nongreedy player? What problems might occur?
     
