@@ -1,12 +1,17 @@
 ### Introduction 
-This is a note for the book Reinforcement Learning: An Introduction 2nd Edition(By Sutton & Barto).
-These codes (will) include:
-+ Solutions to exercise problems
-+ The code generating each figure in the book.
+This [repo](https://github.com/brycechen1849/RL2BookSolutions) is a note for the book Reinforcement Learning: An Introduction 2nd Edition by Sutton & Barto.
+It serves mainly as a guide to have a thinking in depth on exercise problems proposed in this book.  
+
+It aims to provide answers that are intuitively reasonable, experimentally proved and mathematically proved. Most of the time the first two are guaranteed.
+Hopefully the verbosity and elaboration would get you inspired :D . If you ever get confused reading this note, raise an issue, pull a merge request or if you prefer, feel free to contact me at brycechen1849@gmail.com.
+
+This note is now being rapidly updated because I'm still intensively getting familiar with the RL research area. The codes (will) include:
++ Experimentally proved solutions to exercise problems with reasonable explanation 
++ The code generating each figure in the book
 
 ### Solutions
 [PDF Release](https://brycechen1849.github.io/RL2BookSolutions/pdf) will soon be available once I finished the note. 🚧   
-[Web hosted docs](https://brycechen1849.github.io/RL2BookSolutions/solutions_full) are available and I believe these should serve the purpose well enough :D     
+[Web hosted docs](https://brycechen1849.github.io/RL2BookSolutions/solutions_full) are available and I believe these should serve the purpose well enough.    
 + [Chapter 1](https://brycechen1849.github.io/RL2BookSolutions/solution_ch1) exercise solutions ⌛️ (deferred)
 + [Chapter 2](https://brycechen1849.github.io/RL2BookSolutions/solution_ch2) exercise solutions ☑️ 
 + [Chapter 3](https://brycechen1849.github.io/RL2BookSolutions/solution_ch3) exercise solutions 🏃 (in progress ...)
@@ -70,6 +75,3 @@ The code implementations references are:
 + Code for each figure in the book: [reinforcement-learning-an-introduction](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)  
 
 For figures, usage and examples can be accessed at *[Matplotlib Gallery](https://matplotlib.org/gallery/index.html)*
-### Finally
-Again, this serves mainly as a note for the book and it's still being rapidly updated because I'm, at the same time, trying to get familiar with the RL research area.  
-If you have any questions, feel free to contact me at brycechen1849@gmail.com .
