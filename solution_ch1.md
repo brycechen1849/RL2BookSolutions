@@ -19,7 +19,22 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 Chapter 1 is an introductory chapter with ***tic-tac-toe*** game as an example of the full story. 
 It involves more advanced topics on reinforcement learning that I would choose to implement when later chapters are finished.
 (Although there is a implementation of the full simulation in tic-tac-toe.py)
-1. ***Exercise 1.1***
+1. ***Exercise 1.1 Self-Play*** Suppose, instead of playing against a random opponent, the reinforcement learning algorithm described above played against itself, with both sides learning. What do you think would happen in this case? Would it learn a different policy for selecting moves?
+    
+    ***Ans:***
+    
+    I guess from intuition that the process would start with both side learning to play better games as both side have no good estimations on each state.
+    As they update their estimations, ties will be more and more common.
+    They will converge to all ties at last.
+    
+    ![exercise_2_1](images/exercise_1_1.png)
+    
+    Since the final performance are highly dependent to epsilons. I did the experiments with a grid of epsilons ranging from 0 ~ 0.9. Each set trains for 10000 rounds of games and test on 1000 rounds of games.
+    
+    ![exercise_2_1 Grid](images/exercise_1_1_Grid.png)
+    
+    Test results are shown on the figure. Trend is that with higher epsilon a player would have higher winning rate.
+
 1. ***Exercise 1.2***
 1. ***Exercise 1.3***
 1. ***Exercise 1.4***

@@ -183,10 +183,11 @@ class Judge:
 class Player:
     # @step_size: the step size to update estimations
     # @epsilon: the probability to explore
-    def __init__(self, step_size=0.1, epsilon=0.1):
+    def __init__(self, step_size=0.1, epsilon=0.1, exp_number=0):
         self.estimations = dict()
         self.step_size = step_size
         self.epsilon = epsilon
+        self.exp_number = exp_number
         self.states = []
         self.greedy = []
         self.symbol = 0
@@ -262,11 +263,13 @@ class Player:
         return action
 
     def save_policy(self):
-        with open('../data/tic-tac-toe_policy_%s.bin' % ('first' if self.symbol == 1 else 'second'), 'wb') as f:
+        with open('../data/policies/tic-tac-toe_policy_%s_%02d.bin' % (
+                'first' if self.symbol == 1 else 'second', self.exp_number), 'wb') as f:
             pickle.dump(self.estimations, f)
 
     def load_policy(self):
-        with open('../data/tic-tac-toe_policy_%s.bin' % ('first' if self.symbol == 1 else 'second'), 'rb') as f:
+        with open('../data/policies/tic-tac-toe_policy_%s_%02d.bin' % (
+                'first' if self.symbol == 1 else 'second', self.exp_number), 'rb') as f:
             self.estimations = pickle.load(f)
 
 
@@ -312,7 +315,8 @@ def train(epochs, print_every_n=500):
         if winner == -1:
             player2_win += 1
         if i % print_every_n == 0:
-            print('Epoch %d, player 1 win rate: %.02f, player 2 win rate: %.02f' % (i, player1_win / i, player2_win / i))
+            print(
+                'Epoch %d, player 1 win rate: %.02f, player 2 win rate: %.02f' % (i, player1_win / i, player2_win / i))
         player1.backup()
         player2.backup()
         judge.reset()
@@ -320,9 +324,9 @@ def train(epochs, print_every_n=500):
     player2.save_policy()
 
 
-def compete(turns):
-    player1 = Player(epsilon=0)
-    player2 = Player(epsilon=0.1)
+def compete(turns, ep1=0, ep2=0):
+    player1 = Player(epsilon=ep1)
+    player2 = Player(epsilon=ep2)
     judge = Judge(player1, player2)
     player1.load_policy()
     player2.load_policy()
@@ -336,6 +340,7 @@ def compete(turns):
             player2_win += 1
         judge.reset()
     print('%d turns, player 1 win %.05f, player 2 win %.05f' % (turns, player1_win / turns, player2_win / turns))
+    return player1_win / turns, player2_win / turns
 
 
 # The game is a zero sum game. If both players are playing with an optimal strategy, every game will end in a tie.
