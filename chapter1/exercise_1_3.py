@@ -67,28 +67,19 @@ def ex11():
         p1_winrate_history = p1_win_rate
         p2_winrate_history = p2_win_rate
 
-        np.save("../data/exercies_1_1_p1_winrate_train.npy", p1_winrate_history)
-        np.save("../data/exercies_1_1_p2_winrate_train.npy", p2_winrate_history)
+        np.save("../data/exercies_1_3_p1_winrate_train.npy", p1_winrate_history)
+        np.save("../data/exercies_1_3_p2_winrate_train.npy", p2_winrate_history)
 
     testing = False
     if testing:
         # testing phase
         turns = 2000
         p1_win_rate, p2_win_rate = compete(turns=turns, ep1=1.0, ep2=0)
-        np.save("../data/exercies_1_1_p1_winrate_test.npy", p1_win_rate)
-        np.save("../data/exercies_1_1_p2_winrate_test.npy", p2_win_rate)
+        np.save("../data/exercies_1_3_p1_winrate_test.npy", p1_win_rate)
+        np.save("../data/exercies_1_3_p2_winrate_test.npy", p2_win_rate)
 
-    p1_win_rate = np.load("../data/exercies_1_1_p1_winrate_test.npy")
-    p2_win_rate = np.load("../data/exercies_1_1_p2_winrate_test.npy")
-
-    # set up a figure twice as wide as it is tall
-    fig = plt.figure(figsize=plt.figaspect(0.4))
-
-    # ===============
-    # First subplot
-    # ===============
-    # set up the axes for the second plot
-    ax1 = fig.add_subplot(1, 2, 1, projection='3d')
+    p1_win_rate = np.load("../data/exercies_1_3_p1_winrate_test.npy")
+    p2_win_rate = np.load("../data/exercies_1_3_p2_winrate_test.npy")
 
     print("Done")
 
