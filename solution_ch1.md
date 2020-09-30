@@ -29,11 +29,11 @@ It involves more advanced topics on reinforcement learning that I would choose t
     
     ![exercise_2_1](images/exercise_1_1.png)
     
-    Since the final performance are highly dependent to epsilons. I did the experiments with a grid of epsilons ranging from 0 ~ 0.9. Each set trains for 10000 rounds of games and test on 1000 rounds of games.
+    Since the final performance are highly dependent to epsilons. I did the experiments with a grid of epsilons ranging from 0 ~ 0.9. Each set trains for 10,0000 rounds of games and tests on 10,000 rounds of games.
     
     ![exercise_2_1 Grid](images/exercise_1_1_Grid.png)
     
-    Test results are shown on the figure. Trend is that with higher epsilon a player would have higher winning rate.
+    Test results are shown on the figure. Trend is that with higher epsilon a player would have higher winning rate. Opponent's desire to explore has negative effect on a player's performance. 
 
 1. ***Exercise 1.2***
 1. ***Exercise 1.3***
