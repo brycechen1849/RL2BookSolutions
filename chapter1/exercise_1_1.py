@@ -78,7 +78,7 @@ def ex11():
                 p1_win_rate, p2_win_rate = train(epochs=epochs, print_every_n=print_every_n, ep1=ep1_list[x],
                                                  ep2=ep2_list[y])
                 p1_winrate_history[x, y] = p1_win_rate
-                p1_winrate_history[x, y] = p2_win_rate
+                p2_winrate_history[x, y] = p2_win_rate
 
         np.save("../data/exercies_1_1_p1_winrate_train.npy", p1_winrate_history)
         np.save("../data/exercies_1_1_p2_winrate_train.npy", p2_winrate_history)
