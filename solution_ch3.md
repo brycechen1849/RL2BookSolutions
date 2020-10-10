@@ -64,15 +64,13 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 1. ***Exercise 3.5*** The equations in Section 3.1 are for the continuing case and need to be modified (very slightly) to apply to episodic tasks. Show that you know the modifications needed by giving the modified version of (3.3).
     
     ***Ans:*** change the set of s' from S(Non-termination state) to S+(All states including termination state)
-    The original equation is:
-    
-    \[ \sum_{s' \in S}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s). \]
-       
+    The original equation is:  
+    $\sum_{s' \in S}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$         
     The modified version is:  
+    $\sum_{s' \in S^n}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$    
+    where, S stands for non-termination states and $S^+$ stands for all states including termination states.  
     
-    $\sum_{s' \in S^n}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
     
-    where, S stands for non-termination states and $S^+$ stands for all states including termination states.
     
     
     
