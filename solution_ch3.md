@@ -48,7 +48,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     Give a table analogous to that in Example 3.3, but for p(s' , r | s, a). It should have columns for s, a, s0, r, and p(s',r|s,a), and a row for every 4-tuple for which p(s',r|s,a) > 0.
     
     ***Ans:***  
-    Since p(s'|s,a) = Sigma p(s',r|s,a) and fortunately each state has only one possible reward (or it's already an expected value). Thus we have:  
+    Since $p(s'\mid s,a) = \sum_{s' \in S}{p(s',r \mid s,a)}$ and fortunately each state has only one possible reward (or it's already an expected value). Thus we have:  
 
     |s|a|s'|r|p(s', r&#124;s,a)|  
     |----|----|----|----|:----:|  
@@ -65,10 +65,24 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     
     ***Ans:*** change the set of s' from S(Non-termination state) to S+(All states including termination state)
     The original equation is:  
-    $\sum_{s' \in S}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$         
+    $\sum_{s' \in S}{\sum_{r \in R}{p(s',r \mid s,a)}}=1,\forall s\in S,\forall a\in A(s).$         
     The modified version is:  
-    $\sum_{s' \in S^+}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$    
+    $\sum_{s' \in S^+}{\sum_{r \in R}{p(s',r \mid s,a)}}=1,\forall s\in S,\forall a\in A(s).$    
     where, S stands for non-termination states and $S^+$ stands for all states including termination states.  
+    
+1. ***Exercise 3.6***  
+    
+    ***Ans:***   Suppose we have episodic length $T$, and current time step $t$, then current return is:  
+    $G_t \doteq R_{t+1} + R_{t+2} + R_{t+3} + \cdots + R_{T} $  
+    And for the discount setting we have:  
+    $G_t \doteq \gamma R_{t+1} + \gamma^2 R_{t+2} + \gamma^3 R_{t+3} + \cdots + \gamma^{T-t} R_{T} = -\gamma^{T-t}$  
+    where $R_{T} = -1$ and all others 0  
+    This is actually the same as $-\gamma^{K}$ in continuous task.
+    
+    
+    
+    
+ 
     
     
     
