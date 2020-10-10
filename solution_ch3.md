@@ -89,7 +89,15 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     
 1. ***Exercise 3.8***  Suppose $\gamma$= 0.5 and the following sequence of rewards is received R1 = -1, R2 =2, R3 =6, R4 =3, and R5 =2, with T =5. What are G0, G1, ...,G5? Hint: Work backwards.
 
-    ***Ans:***  
+    ***Ans:*** The lists are:  
+    + $G_5 = R_6 = 0 $  (By definition of terminal state)
+    + $G_4 = R5 + \gamma G_5 = 2 $  
+    + $G_3 = R4 + \gamma G_4 = 4 $  
+    + $G_2 = R3 + \gamma G_3 = 8 $  
+    + $G_1 = R2 + \gamma G_2 = 6 $  
+    + $G_0 = R1 + \gamma G_1 = 5 $  
+    
+
     
     
  
