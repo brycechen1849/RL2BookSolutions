@@ -44,7 +44,8 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
    
     ***Ans:*** I think there will be both agent that has low level control of motors and that has high level control of where to go. The later agent does the decision making job, such as when there is a stop sign, it decides if the whole vehicle should be stopping in a few seconds. And, the low level controller agent will execute the order from that high level agent in the form that it receives a state that explicitly requires it to do so. Such system and sub-systems are common in latest auto-driving implementation. It brakes down the job and assign them to proper disposal departments.
 
-4. ***Exercise 3.4*** Give a table analogous to that in Example 3.3, but for p(s' , r | s, a). It should have columns for s, a, s0, r, and p(s',r|s,a), and a row for every 4-tuple for which p(s',r|s,a) > 0.
+4. ***Exercise 3.4*** 
+    Give a table analogous to that in Example 3.3, but for p(s' , r | s, a). It should have columns for s, a, s0, r, and p(s',r|s,a), and a row for every 4-tuple for which p(s',r|s,a) > 0.
     
     ***Ans:***  
     Since p(s'|s,a) = Sigma p(s',r|s,a) and fortunately each state has only one possible reward (or it's already an expected value). Thus we have:  
@@ -58,19 +59,18 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     | low   | wait |   low | r_wait   |  1                 |  
     | low   | search |   low | r_search   |  b                 |  
     | low   | search |   high | -3   |  1-b (deplete & recharge)           |  
-    | low   | recharge |   high | 0   |  1                 |
+    | low   | recharge |   high | 0   |  1                 |  
     
-      
 1. ***Exercise 3.5*** The equations in Section 3.1 are for the continuing case and need to be modified (very slightly) to apply to episodic tasks. Show that you know the modifications needed by giving the modified version of (3.3).
     
     ***Ans:*** change the set of s' from S(Non-termination state) to S+(All states including termination state)
     The original equation is:
     
-        $\sum_{s' \in S}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
+    \[ \sum_{s' \in S}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s). \]
        
     The modified version is:  
     
-        $\sum_{s' \in S^n}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
+    $\sum_{s' \in S^n}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
     
     where, S stands for non-termination states and $S^+$ stands for all states including termination states.
     
