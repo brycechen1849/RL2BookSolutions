@@ -66,9 +66,16 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     
     ***Ans:*** change the set of s' from S(Non-termination state) to S+(All states including termination state)
     The original equation is:  
-    $sum_{s' \in S}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
+    ```latex
+    $\sum_{s' \in S}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
+    ```   
+   
     The modified version is:  
-    $sum_{s' \in S^n}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
+   
+    ```latex
+    $\sum_{s' \in S^n}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
+    ```
+   
     where, S stands for non-termination states and $S^+$ stands for all states including termination states.
     
     
