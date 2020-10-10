@@ -126,12 +126,16 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     $ E[R_{t+1}) \mid S_t=s] = \sum_{a \in A(s)}{ \pi (a|S_t) \sum_{s', r}{ r \times p(s',r \mid s,a)} } $   
     The basic idea here is that for each state s, there are several actions to choose and for each action chosen, there are several possible next state and reward pair. The expected reward is thus weighted average over these possible rewards.    
     
-1. ***Exercise 3.12*** 
+1. ***Exercise 3.12*** Give an equation for $v_{\pi}$ in terms of $q_{\pi}$ and $\pi$  
     
-    ***Ans:*** 
+    ***Ans:***  
+    $v_{\pi}(s) = \sum_{a \in A(s)}{\pi(a \mid s) \times q_{\pi}(s,a)} $   
     
+1. ***Exercise 3.13*** Give an equation for $q_{\pi}$ in terms of $v_{\pi}$ and the four-argument p  
     
- 
+    ***Ans:***  
+    $q_{\pi}(s,a) = \sum_{s',r}{  p(s',r \mid s,a) \times (r + v_{\pi}(s')) } $  
+
  
     
     
