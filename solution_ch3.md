@@ -109,8 +109,8 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 1. ***Exercise 3.10*** Prove the second equality in (3.10).  
 
     ***Ans:***  
-    $G_t = \gamma^0 + \gamma^1 + \gamma^2 + \gamma^3 + \cdots$  + \gamma^{\infty}$
-    $ \gamma G_t = \gamma^1 + \gamma^2 + \gamma^3 + \gamma^4 + \cdots + \gamma^{\infty} \gamma$   
+    $G_t = \gamma^0 + \gamma^1 + \gamma^2 + \gamma^3 + \cdots + \gamma^{\infty}$
+    $\gamma G_t = \gamma^1 + \gamma^2 + \gamma^3 + \gamma^4 + \cdots + \gamma^{\infty} \gamma$   
     Where $\gamma^{\infty} \gamma$ is an infinitely small term and can be written as $\gamma^{\infty}$ .   
     Then by subtracting both sides of the first equation with the second  
     $(1-\gamma) G_t = 1 - \gamma^{\infty} $  
