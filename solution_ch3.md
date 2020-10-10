@@ -48,7 +48,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     Give a table analogous to that in Example 3.3, but for p(s' , r | s, a). It should have columns for s, a, s0, r, and p(s',r|s,a), and a row for every 4-tuple for which p(s',r|s,a) > 0.
     
     ***Ans:***  
-    Since $p(s'\mid s,a) = \sum_{s' \in S}{p(s',r \mid s,a)}$ and fortunately each state has only one possible reward (or it's already an expected value). Thus we have:  
+    Since $p(s'\mid s,a) = \sum_{r \in R}{p(s',r \mid s,a)}$ and fortunately each state has only one possible reward (or it's already an expected value). Thus we have:  
 
     |s|a|s'|r|p(s', r&#124;s,a)|  
     |----|----|----|----|:----:|  
@@ -77,7 +77,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     And for the discount setting we have:  
     $G_t \doteq \gamma^0 R_{t+1} + \gamma^1 R_{t+2} + \gamma^2 R_{t+3} + \cdots + \gamma^{T-t-1} R_{T} = -\gamma^{T-t-1}$  
     where $R_{T} = -1$ and all others 0  
-    This is actually the same as $-\gamma^{K}$ in continuous task.
+    This is actually the same as $-\gamma^{K}$ in continuous task.  
     
 1. ***Exercise 3.7*** Imagine that you are designing a robot to run a maze. You decide to give it a reward of +1 for escaping from the maze and a reward of zero at all other times. The task seems to break down naturally into episodes—the successive runs through the maze—so you decide to treat it as an episodic task, where the goal is to maximize expected total reward (3.7). After running the learning agent for a while, you find that it is showing no improvement in escaping from the maze. What is going wrong? Have you effectively communicated to the agent what you want it to achieve?  
     
@@ -85,7 +85,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     There are 2 ways to tell the agent what we want it to do:
     + Use discount rate $\gamma$ to indicate that the earlier it gets outside the higher reward it would get.  
     + Use reward -0.01 as punishment for each time step before it gets outside.  
-    Both method will in effect change the return estimation it assumes at a time step, making it struggle to get outside as soon as possible.  
+    Both method will in effect change the return estimation it assumes at a time step, making it struggle to get outside as soon as possible.    
     
 1. ***Exercise 3.8***  Suppose $\gamma$= 0.5 and the following sequence of rewards is received R1 = -1, R2 =2, R3 =6, R4 =3, and R5 =2, with T =5. What are G0, G1, ...,G5? Hint: Work backwards.
 
@@ -95,10 +95,17 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     + $G_3 = R4 + \gamma G_4 = 4 $  
     + $G_2 = R3 + \gamma G_3 = 8 $  
     + $G_1 = R2 + \gamma G_2 = 6 $  
-    + $G_0 = R1 + \gamma G_1 = 5 $  
+    + $G_0 = R1 + \gamma G_1 = 2 $  
     
+1. ***Exercise 3.9*** Suppose $\gamma$ = 0.9 and the reward sequence is R1 = 2 followed by an infinite sequence of 7s. What are G1 and G0?
 
+    ***Ans:***  
+    For continuous task:  
+    $G_1  = \gamma^0 R_2 + \gamma^1 R_3 + \gamma^2 R_4 + \cdots = R \frac{1-\gamma^n}{1-\gamma} = 70  $  
+    because for n large enough $ \lim\limits_{n \to +\infty} \gamma^n = 0  $
+    $G_0 =  R1 + \gamma G_1  = 2 + 63 = 65$  
     
+1. ***Exercise 3.10*** 
     
  
     
