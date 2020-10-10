@@ -102,7 +102,8 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     ***Ans:***  
     For continuous task:  
     $G_1  = \gamma^0 R_2 + \gamma^1 R_3 + \gamma^2 R_4 + \cdots = R \frac{1-\gamma^n}{1-\gamma} = 70  $  
-    because for n large enough $ \lim\limits_{n \to +\infty} \gamma^n = 0  $
+    because for n large enough $ \lim\limits_{n \to +\infty} \gamma^n = 0  $  
+    Thus we have  
     $G_0 =  R1 + \gamma G_1  = 2 + 63 = 65$  
     
 1. ***Exercise 3.10*** 
