@@ -49,9 +49,6 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     ***Ans:***  
     Since p(s'|s,a) = Sigma p(s',r|s,a) and fortunately each state has only one possible reward (or it's already an expected value). Thus we have:  
 
-    ```latex
-    Table     
-    ```
     |s|a|s'|r|p(s', r&#124;s,a)|  
     |----|----|----|----|:----:|  
     |high|wait|high|r_wait|1|  
@@ -68,17 +65,13 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     
     ***Ans:*** change the set of s' from S(Non-termination state) to S+(All states including termination state)
     The original equation is:
-      
-    ```math
-    $\sum_{s' \in S}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
-    ```   
-   
+    
+        $\sum_{s' \in S}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
+       
     The modified version is:  
-   
-    ```math
-    $\sum_{s' \in S^n}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
-    ```
-   
+    
+        $\sum_{s' \in S^n}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
+    
     where, S stands for non-termination states and $S^+$ stands for all states including termination states.
     
     
