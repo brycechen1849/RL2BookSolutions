@@ -75,7 +75,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     ***Ans:***   Suppose we have episodic length $T$, and current time step $t$, then current return is:  
     $G_t \doteq R_{t+1} + R_{t+2} + R_{t+3} + \cdots + R_{T} $  
     And for the discount setting we have:  
-    $G_t \doteq \gamma R_{t+1} + \gamma^2 R_{t+2} + \gamma^3 R_{t+3} + \cdots + \gamma^{T-t} R_{T} = -\gamma^{T-t}$  
+    $G_t \doteq \gamma^0 R_{t+1} + \gamma^1 R_{t+2} + \gamma^2 R_{t+3} + \cdots + \gamma^{T-t-1} R_{T} = -\gamma^{T-t-1}$  
     where $R_{T} = -1$ and all others 0  
     This is actually the same as $-\gamma^{K}$ in continuous task.
     
