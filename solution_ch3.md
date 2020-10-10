@@ -49,8 +49,9 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     ***Ans:***  
     Since p(s'|s,a) = Sigma p(s',r|s,a) and fortunately each state has only one possible reward (or it's already an expected value). Thus we have:  
 
-    Table:  
-    
+    ```latex
+    Table     
+    ```
     |s|a|s'|r|p(s', r&#124;s,a)|  
     |----|----|----|----|:----:|  
     |high|wait|high|r_wait|1|  
@@ -61,18 +62,20 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     | low   | search |   low | r_search   |  b                 |  
     | low   | search |   high | -3   |  1-b (deplete & recharge)           |  
     | low   | recharge |   high | 0   |  1                 |
+    
       
 1. ***Exercise 3.5*** The equations in Section 3.1 are for the continuing case and need to be modified (very slightly) to apply to episodic tasks. Show that you know the modifications needed by giving the modified version of (3.3).
     
     ***Ans:*** change the set of s' from S(Non-termination state) to S+(All states including termination state)
-    The original equation is:  
-    ```latex
+    The original equation is:
+      
+    ```math
     $\sum_{s' \in S}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
     ```   
    
     The modified version is:  
    
-    ```latex
+    ```math
     $\sum_{s' \in S^n}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
     ```
    
