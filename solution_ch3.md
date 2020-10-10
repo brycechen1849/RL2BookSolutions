@@ -109,18 +109,28 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 1. ***Exercise 3.10*** Prove the second equality in (3.10).  
 
     ***Ans:***  
-    $G_t = \gamma^0 + \gamma^1 + \gamma^2 + \gamma^3 + \cdots + \gamma^{\infty}$
+    $G_t = \gamma^0 + \gamma^1 + \gamma^2 + \gamma^3 + \cdots + \gamma^{\infty}$  
+    Multiplying both sides of this equation with $\gamma$  
     $\gamma G_t = \gamma^1 + \gamma^2 + \gamma^3 + \gamma^4 + \cdots + \gamma^{\infty} \gamma$   
     Where $\gamma^{\infty} \gamma$ is an infinitely small term and can be written as $\gamma^{\infty}$ .   
     Then by subtracting both sides of the first equation with the second  
     $(1-\gamma) G_t = 1 - \gamma^{\infty} $  
-    $ \lim\limits_{n \to +\infty} \gamma^n = 0  $   
+    Where $ \lim\limits_{n \to +\infty} \gamma^n = 0 $   
     Thus    
-    $G_t = \frac{1}{1-\gamma}$  
+    $G_t = \frac{1}{1-\gamma}$   
     $Q.E.D$  
     
-1. ***Exercise 3.11***
+1. ***Exercise 3.11*** If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $p$ (3.2)?
+    
     ***Ans:***   
+    $ E[R_{t+1}) \mid S_t=s] = \sum_{a \in A(s)}{ \pi (a|S_t) \sum_{s', r}{ r \times p(s',r \mid s,a)} } $   
+    The basic idea here is that for each state s, there are several actions to choose and for each action chosen, there are several possible next state and reward pair. The expected reward is thus weighted average over these possible rewards.    
+    
+1. ***Exercise 3.12*** 
+    
+    ***Ans:*** 
+    
+    
  
  
     
