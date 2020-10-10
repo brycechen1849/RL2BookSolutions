@@ -106,16 +106,17 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     Thus we have  
     $G_0 =  R1 + \gamma G_1  = 2 + 63 = 65$  
     
-1. ***Exercise 3.10*** 
+1. ***Exercise 3.10*** Prove the second equality in (3.10).  
 
     ***Ans:***  
-    $G_t = \gamma^0 + \gamma^1 + \gamma^2 + \gamma^3 + \cdots$  
-    $ \gamma G_t = \gamma^1 + \gamma^2 + \gamma^3 + \gamma^4 + \cdots$   
-    thus  
-    $(1-\gamma) G_t = 1 - \gamma^{\infty} $ 
-    $ \lim\limits_{n \to +\infty} \gamma^n = 0  $  
-    So  
-    $G_t = \frac{1}{1-\gamma}$
+    $G_t = \gamma^0 + \gamma^1 + \gamma^2 + \gamma^3 + \cdots$  + \gamma^{\infty}$
+    $ \gamma G_t = \gamma^1 + \gamma^2 + \gamma^3 + \gamma^4 + \cdots + \gamma^{\infty} \gamma$   
+    Where $\gamma^{\infty} \gamma$ is an infinitely small term and can be written as $\gamma^{\infty}$ .   
+    Then by subtracting both sides of the first equation with the second  
+    $(1-\gamma) G_t = 1 - \gamma^{\infty} $  
+    $ \lim\limits_{n \to +\infty} \gamma^n = 0  $   
+    Thus    
+    $G_t = \frac{1}{1-\gamma}$  
     $Q.E.D$  
     
 1. ***Exercise 3.11***
