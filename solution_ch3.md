@@ -65,9 +65,9 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     
     ***Ans:*** change the set of s' from S(Non-termination state) to S+(All states including termination state)  
     The original equation is:   
-    $\sum_{s' \in S}{\sum_{r \in R}{p(s',r \mid s,a)}}=1,\forall s\in S,\forall a\in A(s).$         
+    $\displaystyle\sum_{s' \in S}{\displaystyle\sum_{r \in R}{p(s',r \mid s,a)}}=1,\forall s\in S,\forall a\in A(s).$         
     The modified version is:  
-    $\sum_{s' \in S^+}{\sum_{r \in R}{p(s',r \mid s,a)}}=1,\forall s\in S,\forall a\in A(s).$    
+    $\displaystyle\sum_{s' \in S^+}{\displaystyle\sum_{r \in R}{p(s',r \mid s,a)}}=1,\forall s\in S,\forall a\in A(s).$    
     where, $S$ stands for non-termination states and $S^+$ stands for all states including termination states.  
     
 1. ***Exercise 3.6*** Suppose you treated pole-balancing as an episodic task but also used discounting, with all rewards zero except for -1 upon failure. What then would the return be at each time? How does this return differ from that in the discounted, continuing formulation of this task?  
@@ -123,22 +123,30 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 1. ***Exercise 3.11*** If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $p$ (3.2)?
     
     ***Ans:***   
-    $ E[R_{t+1}\mid s] = \sum_{a \in A(s)}{ \pi (a|s) \sum_{s', r}{ r \times p(s',r \mid s,a)} } $   
+    $ E[R_{t+1}\mid s] = \displaystyle\sum_{a \in A(s)}{ \pi (a|s) \displaystyle\sum_{s', r}{ r \times p(s',r \mid s,a)} } $   
     The basic idea here is that for each state s, there are several actions to choose and for each action chosen, there are several possible next state and reward pair. The expected reward is thus weighted average over these possible rewards.    
     
 1. ***Exercise 3.12*** Give an equation for $v_{\pi}$ in terms of $q_{\pi}$ and $\pi$  
     
     ***Ans:***  
-    $v_{\pi}(s) = \sum_{a \in A(s)}{\pi(a \mid s) \times q_{\pi}(s,a)} $   
+    $v_{\pi}(s) = \displaystyle\sum_{a \in A(s)}{\pi(a \mid s) \times q_{\pi}(s,a)} $   
     
 1. ***Exercise 3.13*** Give an equation for $q_{\pi}$ in terms of $v_{\pi}$ and the four-argument p  
     
     ***Ans:***  
-    $q_{\pi}(s,a) = \sum_{s',r}{  p(s',r \mid s,a) \times (r + \gamma v_{\pi}(s')) } $  
+    $q_{\pi}(s,a) = \displaystyle\sum_{s',r}{  p(s',r \mid s,a) \times (r + \gamma v_{\pi}(s')) } $   
 
- 
+1. ***Exercise 3.14*** The Bellman equation (3.14) must hold for each state for the value function $v_{\pi}$ shown in Figure 3.2 (right) of Example 3.5. Show numerically that this equation holds for the center state, valued at +0.7, with respect to its four neighboring states, valued at +2.3, +0.4,  0.4, and +0.7. (These numbers are accurate only to one decimal place.) 
+
+    ***Ans:***
+    According to equation (3.14):
+    $v_{\pi}(s) = \displaystyle\sum_a{\pi(a \mid s) \displaystyle\sum_{s',r }{ p(s',r \mid s,a) \times [r+ \gamma v_{\pi}(s')]}     }$
+       
     
-    
+1. ***Exercise 3.***
+
+    ***Ans:***   
+
     
     
     
