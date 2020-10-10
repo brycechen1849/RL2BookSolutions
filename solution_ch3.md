@@ -70,7 +70,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     $\sum_{s' \in S^+}{\sum_{r \in R}{p(s',r \mid s,a)}}=1,\forall s\in S,\forall a\in A(s).$    
     where, S stands for non-termination states and $S^+$ stands for all states including termination states.  
     
-1. ***Exercise 3.6***  
+1. ***Exercise 3.6*** Suppose you treated pole-balancing as an episodic task but also used discounting, with all rewards zero except for -1 upon failure. What then would the return be at each time? How does this return differ from that in the discounted, continuing formulation of this task?  
     
     ***Ans:***   Suppose we have episodic length $T$, and current time step $t$, then current return is:  
     $G_t \doteq R_{t+1} + R_{t+2} + R_{t+3} + \cdots + R_{T} $  
@@ -79,7 +79,17 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     where $R_{T} = -1$ and all others 0  
     This is actually the same as $-\gamma^{K}$ in continuous task.
     
+1. ***Exercise 3.7*** Imagine that you are designing a robot to run a maze. You decide to give it a reward of +1 for escaping from the maze and a reward of zero at all other times. The task seems to break down naturally into episodes—the successive runs through the maze—so you decide to treat it as an episodic task, where the goal is to maximize expected total reward (3.7). After running the learning agent for a while, you find that it is showing no improvement in escaping from the maze. What is going wrong? Have you effectively communicated to the agent what you want it to achieve?  
     
+    ***Ans:***   
+    There are 2 ways to tell the agent what we want it to do:
+    + Use discount rate $\gamma$ to indicate that the earlier it gets outside the higher reward it would get.  
+    + Use reward -0.01 as punishment for each time step before it gets outside.  
+    Both method will in effect change the return estimation it assumes at a time step, making it struggle to get outside as soon as possible.  
+    
+1. ***Exercise 3.8***  Suppose $\gamma$= 0.5 and the following sequence of rewards is received R1 = -1, R2 =2, R3 =6, R4 =3, and R5 =2, with T =5. What are G0, G1, ...,G5? Hint: Work backwards.
+
+    ***Ans:***  
     
     
  
