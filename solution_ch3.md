@@ -27,7 +27,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 ## Solutions
 
 ### Chapter 3
-1. ***Exercise 3.1*** Devise three example tasks of your own that fit into the MDP framework, identifying for each its states, actions, and rewards. Make the three examples as di↵erent from each other as possible. The framework is abstract and flexible and can be applied in many di↵erent ways. Stretch its limits in some way in at least one of your examples.
+1. ***Exercise 3.1*** Devise three example tasks of your own that fit into the MDP framework, identifying for each its states, actions, and rewards. Make the three examples as different from each other as possible. The framework is abstract and flexible and can be applied in many different ways. Stretch its limits in some way in at least one of your examples.
 
     ***Ans:***  MDPs have markov property that a state must include information about all aspects of the past agent–environment interaction that make a difference for the future.  
     Three Examples:  
@@ -63,12 +63,12 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     
 1. ***Exercise 3.5*** The equations in Section 3.1 are for the continuing case and need to be modified (very slightly) to apply to episodic tasks. Show that you know the modifications needed by giving the modified version of (3.3).
     
-    ***Ans:*** change the set of s' from S(Non-termination state) to S+(All states including termination state)
-    The original equation is:  
+    ***Ans:*** change the set of s' from S(Non-termination state) to S+(All states including termination state)  
+    The original equation is:   
     $\sum_{s' \in S}{\sum_{r \in R}{p(s',r \mid s,a)}}=1,\forall s\in S,\forall a\in A(s).$         
     The modified version is:  
     $\sum_{s' \in S^+}{\sum_{r \in R}{p(s',r \mid s,a)}}=1,\forall s\in S,\forall a\in A(s).$    
-    where, S stands for non-termination states and $S^+$ stands for all states including termination states.  
+    where, $S$ stands for non-termination states and $S^+$ stands for all states including termination states.  
     
 1. ***Exercise 3.6*** Suppose you treated pole-balancing as an episodic task but also used discounting, with all rewards zero except for -1 upon failure. What then would the return be at each time? How does this return differ from that in the discounted, continuing formulation of this task?  
     
@@ -107,7 +107,20 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     $G_0 =  R1 + \gamma G_1  = 2 + 63 = 65$  
     
 1. ***Exercise 3.10*** 
+
+    ***Ans:***  
+    $G_t = \gamma^0 + \gamma^1 + \gamma^2 + \gamma^3 + \cdots$  
+    $ \gamma G_t = \gamma^1 + \gamma^2 + \gamma^3 + \gamma^4 + \cdots$   
+    thus  
+    $(1-\gamma) G_t = 1 - \gamma^{\infty} $ 
+    $ \lim\limits_{n \to +\infty} \gamma^n = 0  $  
+    So  
+    $G_t = \frac{1}{1-\gamma}$
+    $Q.E.D$  
     
+1. ***Exercise 3.11***
+    ***Ans:***   
+ 
  
     
     
