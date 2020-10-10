@@ -1,3 +1,15 @@
+<head>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+            }
+        });
+    </script>
+</head>
+
 # Exercise Solutions
 
 ## Introduction 
@@ -34,8 +46,11 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 
 4. ***Exercise 3.4*** Give a table analogous to that in Example 3.3, but for p(s' , r | s, a). It should have columns for s, a, s0, r, and p(s',r|s,a), and a row for every 4-tuple for which p(s',r|s,a) > 0.
     
-    ***Ans:*** Since p(s'|s,a) = Sigma p(s',r|s,a) and fortunately each state has only one possible reward (or it's already an expected value). Thus we have:  
+    ***Ans:***  
+    Since p(s'|s,a) = Sigma p(s',r|s,a) and fortunately each state has only one possible reward (or it's already an expected value). Thus we have:  
 
+    Table:  
+    
     |s|a|s'|r|p(s', r&#124;s,a)|  
     |----|----|----|----|:----:|  
     |high|wait|high|r_wait|1|  
@@ -47,6 +62,15 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     | low   | search |   high | -3   |  1-b (deplete & recharge)           |  
     | low   | recharge |   high | 0   |  1                 |
       
+1. ***Exercise 3.5*** The equations in Section 3.1 are for the continuing case and need to be modified (very slightly) to apply to episodic tasks. Show that you know the modifications needed by giving the modified version of (3.3).
+    
+    ***Ans:*** change the set of s' from S(Non-termination state) to S+(All states including termination state)
+    The original equation is:  
+    $sum_{s' \in S}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
+    The modified version is:  
+    $sum_{s' \in S^n}{\sum_{r \in R}{p(s',r|s,a)}}=1,\forall s\in S,\forall a\in A(s).$  
+    where, S stands for non-termination states and $S^+$ stands for all states including termination states.
+    
     
     
     
