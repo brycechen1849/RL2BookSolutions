@@ -109,7 +109,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 1. ***Exercise 3.10*** Prove the second equality in (3.10).  
 
     ***Ans:***  
-    $G_t = \gamma^0 + \gamma^1 + \gamma^2 + \gamma^3 + \cdots + \gamma^{\infty}$  
+    $G_t \doteq \gamma^0 R_{t+1} + \gamma^1 R_{t+2} + \gamma^2 R_{t+3} + \cdots $  
     Multiplying both sides of this equation with $\gamma$  
     $\gamma G_t = \gamma^1 + \gamma^2 + \gamma^3 + \gamma^4 + \cdots + \gamma^{\infty} \gamma$   
     Where $\gamma^{\infty} \gamma$ is an infinitely small term and can be written as $\gamma^{\infty}$ .   
@@ -144,9 +144,29 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     Thus  
     $v_{\pi}(s_{center})= \frac{1}{4} \times 0.9 \times (2.3+0.4-0.4+0.7) = 0.675 \approx 0.7 $   
        
-1. ***Exercise 3.15***
+1. ***Exercise 3.15*** In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or only the intervals between them? Prove, using (3.8), that adding a constant c to all the rewards adds a constant, vc, to the values of all states, and thus does not affect the relative values of any states under any policies. What is vc in terms of c and $\gamma$?
 
     ***Ans:***   
+    $v_t = \gamma^0 + \gamma^1 + \gamma^2 + \gamma^3 + \cdots = \displaystyle\sum_{k=0}^{\infty}{r^k R_{t+k+1}}$  
+    If a constant $c$ is added to each $R_k$, then   
+    $v_t = \displaystyle\sum_{k=0}^{\infty}{r^k (R_{t+k+1}+c)}$ =  \displaystyle\sum_{k=0}^{\infty}{r^kR_{t+k+1}} +  \displaystyle\sum_{k=0}^{\infty}{r^k c}
+    The second term will converge to a constant $c \frac{1}{1-\gamma}$ according to the proof in exercise 3.10:  
+    $v_t = \displaystyle\sum_{k=0}^{\infty}{r^kR_{t+k+1}} + \frac{c}{1-\gamma} $  
+    Thus,  
+    $v_c = \frac{c}{1-\gamma} $  
+    Because adding a constant to all reward does not affect the relative values of any states under any policies, the signs of rewards are not important and only the intervals between them matters.  
+    
+1. ***Exercise 3.16*** Now consider adding a constant c to all the rewards in an episodic task, such as maze running. Would this have any effect, or would it leave the task unchanged as in the continuing task above? Why or why not? Give an example.
+
+    ***Ans:***   The state value $v_t$:  
+    $v_t \doteq \gamma^0 R_{t+1} + \gamma^1 R_{t+2} + \gamma^2 R_{t+3} + \cdots + \gamma^{T-(t+1)} R_{T} = \displaystyle\sum_{k=t+1}^{T}{ \gamma^{k-(t+1)} R_{k} }$  
+    Adding a constant $c$ on each reward:  
+    $v_t \doteq  \displaystyle\sum_{k=t+1}^{T}{ \gamma^{k-(t+1)} (R_{k} + c) }$  
+    The extra term here is:
+    $ v_c(t) = \displaystyle\sum_{k=t+1}^{T}{ \gamma^{k-(t+1)} c }$  
+    Since $c$ is a constant:  
+    $ v_c(t) = c \displaystyle\sum_{k=t+1}^{T}{ \gamma^{k-(t+1)}}$  
+    This is not a constant to all states under any policy, therefore the assumption here does not stand.  
 
 1. ***Exercise 3.x***
 
