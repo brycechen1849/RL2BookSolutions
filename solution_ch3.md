@@ -85,8 +85,8 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     There are 2 ways to tell the agent what we want it to do:
     + Use discount rate $\gamma$ to indicate that the earlier it gets outside the higher reward it would get.  
     + Use reward -0.01 as punishment for each time step before it gets outside.  
-    Both method will in effect change the return estimation it assumes at a time step, making it struggle to get outside as soon as possible.    
-    
+    Both method will in effect change the return estimation it assumes at a time step, making it struggle to get outside as soon as possible.  
+        
 1. ***Exercise 3.8***  Suppose $\gamma$= 0.5 and the following sequence of rewards is received R1 = -1, R2 =2, R3 =6, R4 =3, and R5 =2, with T =5. What are G0, G1, ...,G5? Hint: Work backwards.
 
     ***Ans:*** The lists are:  
@@ -96,7 +96,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     + $G_2 = R3 + \gamma G_3 = 8 $  
     + $G_1 = R2 + \gamma G_2 = 6 $  
     + $G_0 = R1 + \gamma G_1 = 2 $  
-    
+        
 1. ***Exercise 3.9*** Suppose $\gamma$ = 0.9 and the reward sequence is R1 = 2 followed by an infinite sequence of 7s. What are G1 and G0?
 
     ***Ans:***  
@@ -140,12 +140,18 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 
     ***Ans:***
     According to equation (3.14):
-    $v_{\pi}(s) = \displaystyle\sum_a{\pi(a \mid s) \displaystyle\sum_{s',r }{ p(s',r \mid s,a) \times [r+ \gamma v_{\pi}(s')]}     }$
+    $v_{\pi}(s) = \displaystyle\sum_a{\pi(a \mid s) \displaystyle\sum_{s',r }{ p(s',r \mid s,a) \times [r+ \gamma v_{\pi}(s')]}}$  
+    Thus  
+    $v_{\pi}(s_{center})= \frac{1}{4} \times 0.9 \times (2.3+0.4-0.4+0.7) = 0.675 \approx 0.7 $   
        
-    
-1. ***Exercise 3.***
+1. ***Exercise 3.15***
 
     ***Ans:***   
+
+1. ***Exercise 3.x***
+
+    ***Ans:***   
+
 
     
     
