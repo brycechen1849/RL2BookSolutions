@@ -168,7 +168,15 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     $ v_c(t) = c \displaystyle\sum_{k=t+1}^{T}{ \gamma^{k-(t+1)}}$  
     This is not a constant to all states under any policy, therefore the assumption here does not stand.  
 
-1. ***Exercise 3.x***
+1. ***Exercise 3.17*** What is the Bellman equation for action values, that is, for $q_{\pi}$? It must give the action value q⇡(s,a) in terms of the action values, q⇡(s0,a0), of possible successors to the state–action pair (s,a). Hint: the backup diagram to the right corresponds to this equation. Show the sequence of equations analogous to (3.14), but for action values.
+
+    ***Ans:***   
+    $q_{\pi}(s,a) = E[G_t \mid S_t = s, A_t = a]$  
+    $q_{\pi}(s,a) = E[ R_t+1 + \gamma G_{t+1}  \mid S_t = s, A_t = a]$  
+    $q_{\pi}(s,a) = \displaystyle\sum_{s',r}{\left[p(s',r \mid s,a) \times  \left(r + \gamma \displaystyle\sum_{a' \sim \pi}{\pi(a' \mid s') q_{\pi}(s',a')}\right)\right]} $  
+    Note that both state transition and policy $\pi$ are stochastic, thus making it's an nested expectation.  
+    
+1. ***Exercise 3.x*** 
 
     ***Ans:***   
 
