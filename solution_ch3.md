@@ -122,62 +122,95 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     
 1. ***Exercise 3.11*** If the current state is $S_t$, and actions are selected according to stochastic policy $\pi$, then what is the expectation of $R_{t+1}$ in terms of $\pi$ and the four-argument function $p$ (3.2)?
     
-    ***Ans:***   
-    $ E[R_{t+1}\mid s] = \displaystyle\sum_{a \in A(s)}{ \pi (a|s) \displaystyle\sum_{s', r}{ r \times p(s',r \mid s,a)} } $   
+    ***Ans:***
+    \begin{equation}  
+        E[R_{t+1}\mid s] = \displaystyle\sum_{a \in A(s)}{ \pi (a|s) \displaystyle\sum_{s', r}{ r \times p(s',r \mid s,a)} }  
+    \end{equation}  
     The basic idea here is that for each state s, there are several actions to choose and for each action chosen, there are several possible next state and reward pair. The expected reward is thus weighted average over these possible rewards.    
     
 1. ***Exercise 3.12*** Give an equation for $v_{\pi}$ in terms of $q_{\pi}$ and $\pi$  
     
     ***Ans:***  
-    $v_{\pi}(s) = \displaystyle\sum_{a \in A(s)}{\pi(a \mid s) \times q_{\pi}(s,a)} $   
+    \begin{equation}  
+    v_{\pi}(s) = \displaystyle\sum_{a \in A(s)}{\pi(a \mid s) \times q_{\pi}(s,a)}    
+    \end{equation}  
     
 1. ***Exercise 3.13*** Give an equation for $q_{\pi}$ in terms of $v_{\pi}$ and the four-argument p  
     
     ***Ans:***  
-    $q_{\pi}(s,a) = \displaystyle\sum_{s',r}{  p(s',r \mid s,a) \times (r + \gamma v_{\pi}(s')) } $   
+    \begin{equation}  
+    q_{\pi}(s,a) = \displaystyle\sum_{s',r}{  p(s',r \mid s,a) \times (r + \gamma v_{\pi}(s')) }    
+    \end{equation}  
 
 1. ***Exercise 3.14*** The Bellman equation (3.14) must hold for each state for the value function $v_{\pi}$ shown in Figure 3.2 (right) of Example 3.5. Show numerically that this equation holds for the center state, valued at +0.7, with respect to its four neighboring states, valued at +2.3, +0.4,  0.4, and +0.7. (These numbers are accurate only to one decimal place.) 
 
     ***Ans:***
     According to equation (3.14):
-    $v_{\pi}(s) = \displaystyle\sum_a{\pi(a \mid s) \displaystyle\sum_{s',r }{ p(s',r \mid s,a) \times [r+ \gamma v_{\pi}(s')]}}$  
+    \begin{equation}      
+    v_{\pi}(s) = \displaystyle\sum_a{\pi(a \mid s) \displaystyle\sum_{s',r }{ p(s',r \mid s,a) \times [r+ \gamma v_{\pi}(s')]}}  
+    \end{equation}  
     Thus  
-    $v_{\pi}(s_{center})= \frac{1}{4} \times 0.9 \times (2.3+0.4-0.4+0.7) = 0.675 \approx 0.7 $   
+    \begin{equation}  
+    v_{\pi}(s_{center})= \frac{1}{4} \times 0.9 \times (2.3+0.4-0.4+0.7) = 0.675 \approx 0.7    
+    \end{equation}        
        
 1. ***Exercise 3.15*** In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or only the intervals between them? Prove, using (3.8), that adding a constant c to all the rewards adds a constant, vc, to the values of all states, and thus does not affect the relative values of any states under any policies. What is vc in terms of c and $\gamma$?
 
     ***Ans:***   
-    $v_t = \gamma^0 + \gamma^1 + \gamma^2 + \gamma^3 + \cdots = \displaystyle\sum_{k=0}^{\infty}{r^k R_{t+k+1}}$  
+    \begin{equation}  
+    v_t = \gamma^0 + \gamma^1 + \gamma^2 + \gamma^3 + \cdots = \displaystyle\sum_{k=0}^{\infty}{r^k R_{t+k+1}}  
+    \end{equation}  
     If a constant $c$ is added to each $R_k$, then   
-    $v_t = \displaystyle\sum_{k=0}^{\infty}{r^k (R_{t+k+1}+c)}$ =  \displaystyle\sum_{k=0}^{\infty}{r^kR_{t+k+1}} +  \displaystyle\sum_{k=0}^{\infty}{r^k c}
+    \begin{equation}  
+    v_t = \displaystyle\sum_{k=0}^{\infty}{r^k (R_{t+k+1}+c)} =  \displaystyle\sum_{k=0}^{\infty}{r^kR_{t+k+1}} +  \displaystyle\sum_{k=0}^{\infty}{r^k c}
+    \end{equation}  
     The second term will converge to a constant $c \frac{1}{1-\gamma}$ according to the proof in exercise 3.10:  
-    $v_t = \displaystyle\sum_{k=0}^{\infty}{r^kR_{t+k+1}} + \frac{c}{1-\gamma} $  
+    \begin{equation}  
+    v_t = \displaystyle\sum_{k=0}^{\infty}{r^kR_{t+k+1}} + \frac{c}{1-\gamma}   
+    \end{equation}  
     Thus,  
-    $v_c = \frac{c}{1-\gamma} $  
+    \begin{equation}  
+    v_c = \frac{c}{1-\gamma}   
+    \end{equation}  
     Because adding a constant to all reward does not affect the relative values of any states under any policies, the signs of rewards are not important and only the intervals between them matters.  
     
 1. ***Exercise 3.16*** Now consider adding a constant c to all the rewards in an episodic task, such as maze running. Would this have any effect, or would it leave the task unchanged as in the continuing task above? Why or why not? Give an example.
 
     ***Ans:***   The state value $v_t$:  
-    $v_t \doteq \gamma^0 R_{t+1} + \gamma^1 R_{t+2} + \gamma^2 R_{t+3} + \cdots + \gamma^{T-(t+1)} R_{T} = \displaystyle\sum_{k=t+1}^{T}{ \gamma^{k-(t+1)} R_{k} }$  
+    \begin{equation}
+        v_t \doteq \gamma^0 R_{t+1} + \gamma^1 R_{t+2} + \gamma^2 R_{t+3} + \cdots + \gamma^{T-(t+1)} R_{T} = \displaystyle\sum_{k=t+1}^{T}{ \gamma^{k-(t+1)} R_{k} }   
+    \end{equation}
     Adding a constant $c$ on each reward:  
-    $v_t \doteq  \displaystyle\sum_{k=t+1}^{T}{ \gamma^{k-(t+1)} (R_{k} + c) }$  
+    \begin{equation}
+        v_t \doteq  \displaystyle\sum_{k=t+1}^{T}{ \gamma^{k-(t+1)} (R_{k} + c) }  
+    \end{equation}
     The extra term here is:
-    $ v_c(t) = \displaystyle\sum_{k=t+1}^{T}{ \gamma^{k-(t+1)} c }$  
+    \begin{equation}
+        v_c(t) = \displaystyle\sum_{k=t+1}^{T}{ \gamma^{k-(t+1)} c }   
+    \end{equation}  
     Since $c$ is a constant:  
-    $ v_c(t) = c \displaystyle\sum_{k=t+1}^{T}{ \gamma^{k-(t+1)}}$  
+    \begin{equation}
+        v_c(t) = c \displaystyle\sum_{k=t+1}^{T}{ \gamma^{k-(t+1)}}  
+    \end{equation}
     This is not a constant to all states under any policy, therefore the assumption here does not stand.  
 
 1. ***Exercise 3.17*** What is the Bellman equation for action values, that is, for $q_{\pi}$? It must give the action value q⇡(s,a) in terms of the action values, q⇡(s0,a0), of possible successors to the state–action pair (s,a). Hint: the backup diagram to the right corresponds to this equation. Show the sequence of equations analogous to (3.14), but for action values.
 
     ***Ans:***
     \begin{equation}   
-    q_{\pi}(s,a) = E[G_t \mid S_t = s, A_t = a]
-    q_{\pi}(s,a) = E[ R_t+1 + \gamma G_{t+1}  \mid S_t = s, A_t = a] 
-    q_{\pi}(s,a) = \displaystyle\sum_{s',r}{\left[p(s',r \mid s,a) \times  \left(r + \gamma \displaystyle\sum_{a' \sim \pi}{\pi(a' \mid s') q_{\pi}(s',a')}\right)\right]}
-    \end{equation}  
-    Note that both state transition and policy $\pi$ are stochastic, thus making it an nested expectation.  
+        q_{\pi}(s,a) = E[G_t \mid S_t = s, A_t = a]
+    \end{equation}   
     
+    \begin{equation}   
+        q_{\pi}(s,a) = E[ R_t+1 + \gamma G_{t+1}  \mid S_t = s, A_t = a] 
+    \end{equation}   
+    
+    \begin{equation}  
+        q_{\pi}(s,a) = \sum_{s',r}{\left[p(s',r \mid s,a) \times  \left(r + \gamma \sum_{a' \sim \pi}{\pi(a' \mid s') q_{\pi}(s',a')}\right)\right]}
+    \end{equation}  
+    
+    Note that both state transition and policy $\pi$ are stochastic, thus making it an nested expectation.  
+
 1. ***Exercise 3.18*** The value of a state depends on the values of the actions possible in that state and on how likely each action is to be taken under the current policy. We can think of this in terms of a small backup diagram rooted at the state and considering each possible action. Give the equation corresponding to this intuition and diagram for the value at the root node, $v_{\pi}(s)$, in terms of the value at the expected leaf node, $q_{\pi}(s,a)$, given $S_t = s$. This equation should include an expectation conditioned on following the policy, $\pi$. Then give a second equation in which the expected value is written out explicitly in terms of $\pi(a \mid s)$ such that no expected value notation appears in the equation.
 
     ***Ans:***  
