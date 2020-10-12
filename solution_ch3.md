@@ -198,15 +198,15 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 
     ***Ans:***
     \begin{equation}   
-        q_{\pi}(s,a) = E[G_t \mid S_t = s, A_t = a]
+        q_{\pi}(s,a) = E[G_t \mid S_t = s, A_t = a]  
     \end{equation}   
     
     \begin{equation}   
-        q_{\pi}(s,a) = E[ R_t+1 + \gamma G_{t+1}  \mid S_t = s, A_t = a] 
+        q_{\pi}(s,a) = E[ R_t+1 + \gamma G_{t+1}  \mid S_t = s, A_t = a]  
     \end{equation}   
     
     \begin{equation}  
-        q_{\pi}(s,a) = \sum_{s',r}{\left[p(s',r \mid s,a) \times  \left(r + \gamma \sum_{a' \sim \pi}{\pi(a' \mid s') q_{\pi}(s',a')}\right)\right]}
+        q_{\pi}(s,a) = \sum_{s',r}{\left[p(s',r \mid s,a) \times  \left(r + \gamma \sum_{a' \sim \pi}{\pi(a' \mid s') q_{\pi}(s',a')}\right)\right]}  
     \end{equation}  
     
     Note that both state transition and policy $\pi$ are stochastic, thus making it an nested expectation.  
@@ -219,6 +219,17 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     \end{equation}  
     
     
+1. ***Exercise 3.19*** The value of an action, $q_{\pi}(s,a)$, depends on the expected next reward and the expected sum of the remaining rewards. Again we can think of this in terms of a small backup diagram, this one rooted at an action (state–action pair) and branching to the possible next states. Give the equation corresponding to this intuition and diagram for the action value, $q_{\pi}(s,a)$, in terms of the expected next reward, $R_{t+1}$, and the expected next state value, $v_{\pi}(S_{t+1})$, given that $S_t =s$ and $A_t =a$. This equation should include an expectation but not one conditioned on following the policy. Then give a second equation, writing out the expected value explicitly in terms of p(s',r|s,a) defined by (3.2), such that no expected value notation appears in the equation.
+
+    ***Ans:***   
+    \begin{equation}
+    q_{\pi}(s,a) = E_{\pi}[R_{t+1} + \gamma s_{\pi}(S_{t+1}) \mid S_t=s,A_t=a]
+    \end{equation} 
+
+    \begin{equation}
+    q_{\pi}(s,a) = \sum_{s',r}{p(s',r|s,a)(r + \gamma v_{\pi}(s'))}
+    \end{equation} 
+
 1. ***Exercise 3.x*** 
 
     ***Ans:***   
