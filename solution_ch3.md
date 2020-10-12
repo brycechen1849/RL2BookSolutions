@@ -170,17 +170,19 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 
 1. ***Exercise 3.17*** What is the Bellman equation for action values, that is, for $q_{\pi}$? It must give the action value q⇡(s,a) in terms of the action values, q⇡(s0,a0), of possible successors to the state–action pair (s,a). Hint: the backup diagram to the right corresponds to this equation. Show the sequence of equations analogous to (3.14), but for action values.
 
-    ***Ans:***   
-    $q_{\pi}(s,a) = E[G_t \mid S_t = s, A_t = a]$  
-    $q_{\pi}(s,a) = E[ R_t+1 + \gamma G_{t+1}  \mid S_t = s, A_t = a]$  
-    $q_{\pi}(s,a) = \displaystyle\sum_{s',r}{\left[p(s',r \mid s,a) \times  \left(r + \gamma \displaystyle\sum_{a' \sim \pi}{\pi(a' \mid s') q_{\pi}(s',a')}\right)\right]} $  
+    ***Ans:***
+    \begin{equation}   
+    q_{\pi}(s,a) = E[G_t \mid S_t = s, A_t = a]
+    q_{\pi}(s,a) = E[ R_t+1 + \gamma G_{t+1}  \mid S_t = s, A_t = a] 
+    q_{\pi}(s,a) = \displaystyle\sum_{s',r}{\left[p(s',r \mid s,a) \times  \left(r + \gamma \displaystyle\sum_{a' \sim \pi}{\pi(a' \mid s') q_{\pi}(s',a')}\right)\right]}
+    \begin{equation}\end{equation}  
     Note that both state transition and policy $\pi$ are stochastic, thus making it an nested expectation.  
     
 1. ***Exercise 3.18*** The value of a state depends on the values of the actions possible in that state and on how likely each action is to be taken under the current policy. We can think of this in terms of a small backup diagram rooted at the state and considering each possible action. Give the equation corresponding to this intuition and diagram for the value at the root node, $v_{\pi}(s)$, in terms of the value at the expected leaf node, $q_{\pi}(s,a)$, given $S_t = s$. This equation should include an expectation conditioned on following the policy, $\pi$. Then give a second equation in which the expected value is written out explicitly in terms of $\pi(a \mid s)$ such that no expected value notation appears in the equation.
 
     ***Ans:***  
     \begin{equation}
-    v_{\pi}(s) = E_{\pi}[q_{\pi}(s,a)] = \displaystyle\sum_{a}{\pi(a \mid s) q_{\pi}(s,a)}
+    v_{\pi}(s) = E_{\pi}[q_{\pi}(s,a)] = \sum_{a}{\pi(a \mid s) q_{\pi}(s,a)}
     \end{equation}  
     
     
