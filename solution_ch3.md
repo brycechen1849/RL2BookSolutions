@@ -241,7 +241,10 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     ***Ans:***  The action sequences of $q_*(s,putter)$ are, by definition, first putter at state s and thereafter use whatever action the optimal policy indicates.   
     So the following illustration is an approximation since the state transition properties of this golf game is not quite clear. But let's have a try.     
     ![ex3.21](images/exercise_3_21.png)  
-    $Figure on the right is for $ q_* (s, putter) $.    
+    \begin{equation}
+        Figure
+    \end{equation}  
+        
     $ q_* (s_0,putter) $ is -4 because a putter at the tee takes it to state s1, and then 2 drivers and 1 putter would be sufficient to finish the job.  
     $ q_* (s_1,putter) $ is -3 because a putter at the s1 takes it to state s2, and then because it's already in states that have $q_*(s,driver)=-2$, only 1 drivers and 1 putter would be sufficient to finish the job.  
     Other State values can also be derived from this method.  
