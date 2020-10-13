@@ -254,8 +254,8 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 
     ***Ans:***   
     + $\gamma=0$, both has +$\infty$ value but the right one is 2x larger because accumulated reward grow faster.    
-        + $q_{\pi_{left}}(s_0, left) = q_{\pi_{left}}(s_1, left) = +\infty $   
-        + $q_{\pi_{right}}(s_0, right) = q_{\pi_{right}}(s_1, right) = +\infty $  
+        + $q_{\pi_{left}}(s_0, left) = q_{\pi_{left}}(s_1, left) = \sum_{i=0}^{\infty}{\gamma^{2i}}=+\infty $   
+        + $q_{\pi_{right}}(s_0, right) = q_{\pi_{right}}(s_1, right) =  \sum_{i=0}^{\infty}{2\gamma^{1+2i}}=+\infty $  
         + \begin{equation}
         \lim\limits_{\gamma \to 1} \frac{\frac{1}{1-\gamma^2}}{\frac{2\gamma}{1-\gamma^2}} = \lim\limits_{\gamma \to 1}\frac{1}{2\gamma} = \frac{1}{2}
         \end{equation}    
@@ -263,10 +263,21 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     + $\gamma=0.9$, the right one is better.
         + $q_{\pi_{left}}(s_0, left) = q_{\pi_{left}}(s_1, left) = \sum_{i=0}^{\infty}{\gamma^{2i}} \approx 5.26$   
         + $q_{\pi_{right}}(s_0, right) = q_{\pi_{right}}(s_1, right) = \sum_{i=0}^{\infty}{2\gamma^{1+2i}} \approx 9.47$  
-    + $\gamma=0.5$, equally good. This is a very interesting result. because \gamma is relatively small (0.5), futures rewards are largely discounted.  
+    + $\gamma=0.5$, equally good. This is a very interesting result. because $\gamma$ is relatively small (0.5), future rewards are largely discounted.  
         + $q_{\pi_{left}}(s_0, left) = q_{\pi_{left}}(s_1, left) = \sum_{i=0}^{\infty}{\gamma^{2i}} \approx 1.33$   
         + $q_{\pi_{right}}(s_0, right) = q_{\pi_{right}}(s_1, right) = \sum_{i=0}^{\infty}{2\gamma^{1+2i}} \approx 1.33$    
+
         
+1. ***Exercise 3.23*** 
+
+    ***Ans:*** There are 5 combinations, namely: q(h, s), q(h, w), q(l, s), q(l, w) and q(l, re).  
+    Take q(h,s) for an example, we can use the backup graph and get:
+      $q_*(h, s) = p( h \mid h,s)(r_s + \gamma Max[q_*(h,s), q_*(h,w)])$  
+      $        + p( l \mid h,s)(r_s + \gamma Max[q_*(l,s), q_*(l,w), q_*(l,re)])$  
+      $        + p( h \mid h,w)(r_w + \gamma Max[q_*(h,s), q_*(h,w)])$  
+      $q_*(h, s) = $
+      Other values can be derived using the same idea.
+    
 1. ***Exercise 3.x*** 
 
     ***Ans:***   
