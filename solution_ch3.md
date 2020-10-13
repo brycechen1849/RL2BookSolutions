@@ -250,8 +250,23 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     Other State values can also be derived from this method.  
     Note that for sands areas, A putter will not bring the ball out, and it need a driver and a putter to get the job done.  
     
-    
-    
+1. ***Exercise 3.22*** Consider the continuing MDP shown on to the right. The only decision to be made is that in the top state, where two actions are available, $left$ and $right$. The numbers show the rewards that are received deterministically after each action. There are exactly two deterministic policies, $\pi_{left}$ and $\pi_{right}$. What policy is optimal if $\gamma$ = 0? If $\gamma$ = 0.9? If $\gamma$ = 0.5?  
+
+    ***Ans:***   
+    + $\gamma=0$, both has +$\infty$ value but the right one is 2x larger because accumulated reward grow faster.    
+        + $q_{\pi_{left}}(s_0, left) = q_{\pi_{left}}(s_1, left) = +\infty $   
+        + $q_{\pi_{right}}(s_0, right) = q_{\pi_{right}}(s_1, right) = +\infty $  
+        + \begin{equation}
+        \lim\limits_{\gamma \to 1} \frac{\frac{1}{1-\gamma^2}}{\frac{2\gamma}{1-\gamma^2}} = \lim\limits_{\gamma \to 1}\frac{1}{2\gamma} = \frac{1}{2}
+        \end{equation}    
+
+    + $\gamma=0.9$, the right one is better.
+        + $q_{\pi_{left}}(s_0, left) = q_{\pi_{left}}(s_1, left) = \sum_{i=0}^{\infty}{\gamma^{2i}} \approx 5.26$   
+        + $q_{\pi_{right}}(s_0, right) = q_{\pi_{right}}(s_1, right) = \sum_{i=0}^{\infty}{2\gamma^{1+2i}} \approx 9.47$  
+    + $\gamma=0.5$, equally good. This is a very interesting result. because \gamma is relatively small (0.5), futures rewards are largely discounted.  
+        + $q_{\pi_{left}}(s_0, left) = q_{\pi_{left}}(s_1, left) = \sum_{i=0}^{\infty}{\gamma^{2i}} \approx 1.33$   
+        + $q_{\pi_{right}}(s_0, right) = q_{\pi_{right}}(s_1, right) = \sum_{i=0}^{\infty}{2\gamma^{1+2i}} \approx 1.33$    
+        
 1. ***Exercise 3.x*** 
 
     ***Ans:***   
