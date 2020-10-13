@@ -219,7 +219,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     \end{equation}  
     
     
-1. ***Exercise 3.19*** The value of an action, $q_{\pi}(s,a)$, depends on the expected next reward and the expected sum of the remaining rewards. Again we can think of this in terms of a small backup diagram, this one rooted at an action (state–action pair) and branching to the possible next states. Give the equation corresponding to this intuition and diagram for the action value, $q_{\pi}(s,a)$, in terms of the expected next reward, $R_{t+1}$, and the expected next state value, $v_{\pi}(S_{t+1})$, given that $S_t =s$ and $A_t =a$. This equation should include an expectation but not one conditioned on following the policy. Then give a second equation, writing out the expected value explicitly in terms of p(s',r|s,a) defined by (3.2), such that no expected value notation appears in the equation.
+1. ***Exercise 3.19*** The value of an action, $q_{\pi}(s,a)$, depends on the expected next reward and the expected sum of the remaining rewards. Again we can think of this in terms of a small backup diagram, this one rooted at an action (state–action pair) and branching to the possible next states. Give the equation corresponding to this intuition and diagram for the action value, $q_{\pi}(s,a)$, in terms of the expected next reward, $R_{t+1}$, and the expected next state value, $v_{\pi}(S_{t+1})$, given that $S_t =s$ and $A_t =a$. This equation should include an expectation but not one conditioned on following the policy. Then give a second equation, writing out the expected value explicitly in terms of $p(s',r \ mid s,a)$ defined by (3.2), such that no expected value notation appears in the equation.
 
     ***Ans:***   
     \begin{equation}
@@ -230,6 +230,24 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     q_{\pi}(s,a) = \sum_{s',r}{p(s',r|s,a)(r + \gamma v_{\pi}(s'))}
     \end{equation} 
 
+1. ***Exercise 3.20*** Draw or describe the optimal state-value function for the golf example.   
+
+    ***Ans:*** We can view the value as 'how many strokes do I need to sink the ball'.  
+    From the tee, the best sequence of actions is two drives and one putt, sinking the ball in three strokes.  
+    Areas that are outside of the green (including sands) follows $q_*(s, driver)$ and inside the green $v_{putter}(s)$  
+
+1. ***Exercise 3.21*** Draw or describe the contours of the optimal action-value function for putting, $q_*(s,putter)$, for the golf example.  
+
+    ***Ans:***  The action sequences of $q_*(s,putter)$ are, by definition, first putter at state s and thereafter use whatever action the optimal policy indicates.   
+    So the following illustration is an approximation since the state transition properties of this golf game is not quite clear. But let's have a try.     
+    ![ex3.21](images/exercise_3_21.png)  
+    $q_*(s0,putter)$ is -4 because a putter at the tee takes it to state s1, and then 2 drivers and 1 putter would be sufficient to finish the job.  
+    $q_*(s1,putter)$ is -3 because a putter at the s1 takes it to state s2, and then because it's already in states that have $q_*(s,driver)=-2$, only 1 drivers and 1 putter would be sufficient to finish the job.  
+    Other State values can also be derived from this method.  
+    Note that for sands areas, A putter will not bring the ball out, and it need a driver and a putter to get the job done.  
+    
+    
+    
 1. ***Exercise 3.x*** 
 
     ***Ans:***   
