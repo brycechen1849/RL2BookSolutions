@@ -263,25 +263,68 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     + $\gamma=0.9$, the right one is better.
         + $q_{\pi_{left}}(s_0, left) = q_{\pi_{left}}(s_1, left) = \sum_{i=0}^{\infty}{\gamma^{2i}} \approx 5.26$   
         + $q_{\pi_{right}}(s_0, right) = q_{\pi_{right}}(s_1, right) = \sum_{i=0}^{\infty}{2\gamma^{1+2i}} \approx 9.47$  
+
     + $\gamma=0.5$, equally good. This is a very interesting result. because $\gamma$ is relatively small (0.5), future rewards are largely discounted.  
         + $q_{\pi_{left}}(s_0, left) = q_{\pi_{left}}(s_1, left) = \sum_{i=0}^{\infty}{\gamma^{2i}} \approx 1.33$   
         + $q_{\pi_{right}}(s_0, right) = q_{\pi_{right}}(s_1, right) = \sum_{i=0}^{\infty}{2\gamma^{1+2i}} \approx 1.33$    
+    
 
         
-1. ***Exercise 3.23*** Give the Bellman equation for q⇤ for the recycling robot.  
+1. ***Exercise 3.23*** Give the Bellman equation for $q_*$ for the recycling robot.  
 
     ***Ans:*** There are 5 combinations, namely: q(h, s), q(h, w), q(l, s), q(l, w) and q(l, re).  
     Take q(h,s) for an example, we can use the backup graph and get:  
-    $q_*(h, s) = p( h \mid h,s)(r_s + \gamma Max[q_*(h,s), q_*(h,w)])$  
+    $ q_*(h, s) = p( h \mid h,s)(r_s + \gamma Max[q_*(h,s), q_*(h,w)]) $  
     $        + p( l \mid h,s)(r_s + \gamma Max[q_*(l,s), q_*(l,w), q_*(l,re)])$  
     $        + p( h \mid h,w)(r_w + \gamma Max[q_*(h,s), q_*(h,w)])$  
-    $q_*(h, s) = $  
+    $ q_*(h, s) = $  
     Other values can be derived using the same idea.
     
-1. ***Exercise 3.x*** 
+1. ***Exercise 3.24*** 
 
     ***Ans:***   
+    
+1. ***Exercise 3.25*** Give an equation for $v_*$ in terms of $q_*$.
 
+    ***Ans:***  
+    \begin{equation}
+        v_*(s) = Max_{a \in A(s)}[q_*(s,a)]  
+    \end{equation}  
+
+1. ***Exercise 3.26*** Give an equation for $q_*$ in terms of $v_*$ and the four-argument $p$.
+
+    ***Ans:***   ex3.25 has an equation and in order to incorporate the four value functions into it,  we will have to use the next state $s'$.
+
+    \begin{equation}
+        v_*(s) = \sum_{s'} \left[ p(s',r \mid s,a) v_*(s') \right]  
+    \end{equation}   
+    Where $a=argmax(q_*(s,a))$  
+    
+1. ***Exercise 3.27*** Give an equation for $\pi_*$ in terms of $q_*$.
+
+    ***Ans:*** Since $\pi_*$ is the optimal action probability distribution, for any state $s$, the optimal action is determined by:      
+    \begin{equation}
+        a=argmax(q_*(s,a))
+    \end{equation}   
+    Thus  
+    \[ \pi_*(s,a) =
+    \begin{cases}
+    1       & \quad \text{if } a=argmax(q_*(s,a)) \\
+    0  & \quad \text{other } a 
+    \end{cases}
+    \]  
+    
+    
+1. ***Exercise 3.28*** Give an equation for $\pi_*$ in terms of $v_*$ and the four-argument $p$.  
+
+    ***Ans:***  Since 
+    v_*(s') = \sum_{s'} \left[ p(s',r \mid s,a) v_*(s') \right] 
+
+1. ***Exercise 3.24*** 
+
+    ***Ans:***   
+    
+    
 
     
     
