@@ -34,7 +34,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     + An agent that plays the game of go. the board represents the state. Location of the next move is it's action and reward is usually 0 after each move because the game is not yet finished, only when it's finished, the reward is a positive value if it wins or negative if it loses.  
     + An agent that trades assets in a financial market. Prices and other financial indices are the state. Actions include holding, short and long. the rewards are given after each action by it's profitability.
     + An agent that is used as temperature controller chip in an AC. current voltage, power and temperature consist of the state. The voltage and power to output are the action and reward is positive if it keeps the temperature in a predefined range.  
-    The limits of example 2 (Trading agent) is that the state is partially observable to the agent. Thus the agent will receive an observation instead of a state in each interaction. Make if sometimes impossible to distinguish from two different states that has same observation.
+    The limits of example 2 (Trading agent) is that the state is partially observable to the agent. Thus the agent will receive an observation instead of a state in each interaction. Make if sometimes impossible to distinguish from two different states that has same observation.  
 
 2. ***Exercise 3.2*** Is the MDP framework adequate to usefully represent all goal-directed learning tasks? Can you think of any clear exceptions? 
 
@@ -61,6 +61,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     | low   | search |   high | -3   |  1-b (deplete & recharge)           |  
     | low   | recharge |   high | 0   |  1                 |  
     
+    
 1. ***Exercise 3.5*** The equations in Section 3.1 are for the continuing case and need to be modified (very slightly) to apply to episodic tasks. Show that you know the modifications needed by giving the modified version of (3.3).
     
     ***Ans:*** change the set of s' from S(Non-termination state) to S+(All states including termination state)  
@@ -86,6 +87,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     + Use discount rate $\gamma$ to indicate that the earlier it gets outside the higher reward it would get.  
     + Use reward -0.01 as punishment for each time step before it gets outside.  
     Both method will in effect change the return estimation it assumes at a time step, making it struggle to get outside as soon as possible.  
+
         
 1. ***Exercise 3.8***  Suppose $\gamma$= 0.5 and the following sequence of rewards is received R1 = -1, R2 =2, R3 =6, R4 =3, and R5 =2, with T =5. What are G0, G1, ...,G5? Hint: Work backwards.
 
@@ -96,6 +98,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     + $G_2 = R3 + \gamma G_3 = 8 $  
     + $G_1 = R2 + \gamma G_2 = 6 $  
     + $G_0 = R1 + \gamma G_1 = 2 $  
+
         
 1. ***Exercise 3.9*** Suppose $\gamma$ = 0.9 and the reward sequence is R1 = 2 followed by an infinite sequence of 7s. What are G1 and G0?
 
@@ -259,16 +262,13 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
         + \begin{equation}
         \lim\limits_{\gamma \to 1} \frac{\frac{1}{1-\gamma^2}}{\frac{2\gamma}{1-\gamma^2}} = \lim\limits_{\gamma \to 1}\frac{1}{2\gamma} = \frac{1}{2}
         \end{equation}    
-
     + $\gamma=0.9$, the right one is better.
         + $q_{\pi_{left}}(s_0, left) = q_{\pi_{left}}(s_1, left) = \sum_{i=0}^{\infty}{\gamma^{2i}} \approx 5.26$   
         + $q_{\pi_{right}}(s_0, right) = q_{\pi_{right}}(s_1, right) = \sum_{i=0}^{\infty}{2\gamma^{1+2i}} \approx 9.47$  
-
     + $\gamma=0.5$, equally good. This is a very interesting result. because $\gamma$ is relatively small (0.5), future rewards are largely discounted.  
         + $q_{\pi_{left}}(s_0, left) = q_{\pi_{left}}(s_1, left) = \sum_{i=0}^{\infty}{\gamma^{2i}} \approx 1.33$   
-        + $q_{\pi_{right}}(s_0, right) = q_{\pi_{right}}(s_1, right) = \sum_{i=0}^{\infty}{2\gamma^{1+2i}} \approx 1.33$    
-    
-
+        + $q_{\pi_{right}}(s_0, right) = q_{\pi_{right}}(s_1, right) = \sum_{i=0}^{\infty}{2\gamma^{1+2i}} \approx 1.33 $    
+    + End.
         
 1. ***Exercise 3.23*** Give the Bellman equation for $q_*$ for the recycling robot.  
 
