@@ -274,10 +274,18 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 
     ***Ans:*** There are 5 combinations, namely: q(h, s), q(h, w), q(l, s), q(l, w) and q(l, re).  
     Take q(h,s) for an example, we can use the backup graph and get:  
-    $ q_*(h, s) = p( h \mid h,s)(r_s + \gamma Max[q_*(h,s), q_*(h,w)]) $  
-    $        + p( l \mid h,s)(r_s + \gamma Max[q_*(l,s), q_*(l,w), q_*(l,re)])$  
-    $        + p( h \mid h,w)(r_w + \gamma Max[q_*(h,s), q_*(h,w)])$  
-    $ q_*(h, s) = $  
+    \begin{equation}
+        q_*(h, s) = p( h \mid h,s)(r_s + \gamma Max[q_*(h,s), q_*(h,w)]) 
+    \end{equation} 
+    \begin{equation}
+            + p( l \mid h,s)(r_s + \gamma Max[q_*(l,s), q_*(l,w), q_*(l,re)]) 
+    \end{equation} 
+    \begin{equation} 
+            + p( h \mid h,w)(r_w + \gamma Max[q_*(h,s), q_*(h,w)])  
+    \end{equation} 
+    \begin{equation}
+    q_*(h, s) =
+    \end{equation} 
     Other values can be derived using the same idea.
     
 1. ***Exercise 3.24*** 
