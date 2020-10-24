@@ -142,7 +142,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     q_{\pi}(s,a) = \displaystyle\sum_{s',r}{  p(s',r \mid s,a) \times (r + \gamma v_{\pi}(s')) }    
     \end{equation}  
 
-1. ***Exercise 3.14*** The Bellman equation (3.14) must hold for each state for the value function $v_{\pi}$ shown in Figure 3.2 (right) of Example 3.5. Show numerically that this equation holds for the center state, valued at +0.7, with respect to its four neighboring states, valued at +2.3, +0.4,  0.4, and +0.7. (These numbers are accurate only to one decimal place.) 
+1. ***Exercise 3.14*** The Bellman equation (3.14) must hold for each state for the value function $v_{\pi}$ shown in Figure 3.2 (right) of Example 3.5. Show numerically that this equation holds for the center state, valued at +0.7, with respect to its four neighboring states, valued at +2.3, +0.4, -0.4, and +0.7. (These numbers are accurate only to one decimal place.) 
 
     ***Ans:***
     According to equation (3.14):
@@ -307,22 +307,33 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
         a=argmax(q_*(s,a))
     \end{equation}   
     Thus  
-    \[ \pi_*(s,a) =
+    \[ \pi_*(a \mid s) =
     \begin{cases}
     1       & \quad \text{if } a=argmax(q_*(s,a)) \\
     0  & \quad \text{other } a 
     \end{cases}
     \]  
     
-    
 1. ***Exercise 3.28*** Give an equation for $\pi_*$ in terms of $v_*$ and the four-argument $p$.  
 
     ***Ans:***  Since 
-    v_*(s') = \sum_{s'} \left[ p(s',r \mid s,a) v_*(s') \right] 
+    \begin{equation}
+        q_*(s,a) = \sum_{s',r} \left[ p(s',r \mid s,a) (r+ \gamma v_*(s')) \right] 
+    \end{equation}  
+    And according to solution in 3.27  
+    \[ \pi_*(a \mid s) =
+    \begin{cases}
+    1  & \quad \text{if } a=argmax(\sum_{s',r} \left[ p(s',r \mid s,a) (r+ \gamma v_*(s')) \right]) \\
+    0  & \quad \text{other } a 
+    \end{cases}
+    \]  
+   
+   
 
-1. ***Exercise 3.24*** 
+1. ***Exercise 3.29*** 
 
     ***Ans:***   
+
     
     
 
