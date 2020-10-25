@@ -270,22 +270,20 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
         + $q_{\pi_{right}}(s_0, right) = q_{\pi_{right}}(s_1, right) = \sum_{i=0}^{\infty}{2\gamma^{1+2i}} \approx 1.33 $    
     + End.
         
-1. ***Exercise 3.23*** Give the Bellman equation for $q_*$ for the recycling robot.  
+1. ***Exercise 3.23*** Give the Bellman equation for $ q_* $ for the recycling robot.   
 
     ***Ans:*** There are 5 combinations, namely: q(h, s), q(h, w), q(l, s), q(l, w) and q(l, re).  
     Take q(h,s) for an example, we can use the backup graph and get:  
     \begin{equation}
-        q_*(h, s) = p( h \mid h,s)(r_s + \gamma Max[q_*(h,s), q_*(h,w)]) 
+    q_*(h, s) = p( h \mid h,s)(r_s + \gamma Max[q_*(h,s), q_*(h,w)]) + 
     \end{equation} 
     \begin{equation}
-            + p( l \mid h,s)(r_s + \gamma Max[q_*(l,s), q_*(l,w), q_*(l,re)]) 
+    p( l \mid h,s)(r_s + \gamma Max[q_*(l,s), q_*(l,w), q_*(l,re)]) +
     \end{equation} 
     \begin{equation} 
-            + p( h \mid h,w)(r_w + \gamma Max[q_*(h,s), q_*(h,w)])  
+    p( h \mid h,w)(r_w + \gamma Max[q_*(h,s), q_*(h,w)])  
     \end{equation} 
-    \begin{equation}
-    q_*(h, s) =
-    \end{equation} 
+        
     Other values can be derived using the same idea.
     
 1. ***Exercise 3.24*** 
