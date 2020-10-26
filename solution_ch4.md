@@ -41,10 +41,15 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
         
 1. ***Exercise 4.2*** 
 
-    ***Ans:***   Programming simulation
+    ***Ans:***   If transitions of state 13 is unchanged, then state 15 is not reachable unless it's born there.  
+    So, state 15 won't be successor state of any states, and it does not affect the value function.  
+    v(15) = 1/4 x ( v(12) + v(13) + v(14) + v(15) )  
+    v(15)= -18.7  
     
+    If state 15 is down from state 13, and you can also go other states from here, it becomes intertwined thus will change values of all states.  
     
-        
+    Programming simulation   
+    
 1. ***Exercise 4.3*** 
 
     ***Ans:***   
@@ -92,8 +97,23 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 1. ***Exercise 4.7*** 
 
     ***Ans:***    Programming simulation 
-    
-    
-1. ***Exercise 3.24*** 
 
-    ***Ans:***   
+1. ***Exercise 4.8*** 
+
+    ***Ans:***     
+
+1. ***Exercise 4.9*** 
+
+    ***Ans:***    Programming simulation 
+    
+1. ***Exercise 4.10*** 
+
+    ***Ans:***  
+    \begin{equation}
+        Q_{k+1}(s,a) = \sum_{s',r}{ p(s',r|s,a) (r + \gamma Max_{a'}Q_{k}(s',a')) }
+    \end{equation}  
+
+1. ***Exercise 4.11*** 
+
+    ***Ans:***    Programming simulation 
+    
