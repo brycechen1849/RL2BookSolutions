@@ -33,12 +33,14 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
 
     ***Ans:***   
     Because if it's already 20 or 21, the player would sticks and has a great chance of winning.  
-    While in other states, it will keep hitting and probably makes it burst.
+    While in other states, it will keep hitting and probably makes it burst.  
+    The opponent having Ace would be a advantage for him.  
+    Having an usable Ace has already been a better state for the player, which suggests that it has a sum between 12 and 21.  
       
         
 1. ***Exercise 5.2*** 
 
-    ***Ans:***   
+    ***Ans:***   No. Both first-visit MC and every-visit MC converge to $v_{\pi}(s)$ as the number of visits (or first visits) to $s$ goes to infinity.   
     
     
 1. ***Exercise 5.3*** 
