@@ -88,7 +88,7 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     \begin{equation}
         V_{\pi}(s) = \sum_{s',r}{p(s',r|s,\pi(s))(r + \gamma V_{\pi}(s'))}
     \end{equation}  
-    is replaced with  
+    is replaced by  
     \begin{equation}
         V_{\pi}(s) = \sum_{a \sim \pi'(s)}{\left[\pi'(s) \sum_{s',r}{p(s',r|s,\pi(s))(r + \gamma V_{\pi}(s'))}\right]}
     \end{equation}  
@@ -112,7 +112,8 @@ For figures, usage and examples can be accessed at *[Matplotlib Gallery](https:/
     \begin{equation}
         Q_{k+1}(s,a) = \sum_{s',r}{ p(s',r|s,a) (r + \gamma Max_{a'}Q_{k}(s',a')) }
     \end{equation}  
-
+    For each state-action pair, (s,a)  
+    
 1. ***Exercise 4.11*** 
 
     ***Ans:***    Programming simulation 

@@ -16,6 +16,7 @@ Web hosted docs are available and I believe these should serve the purpose well 
 + [Chapter 2](https://brycechen1849.github.io/RL2BookSolutions/solution_ch2) exercise solutions ☑️ 
 + [Chapter 3](https://brycechen1849.github.io/RL2BookSolutions/solution_ch3) exercise solutions ☑️ 
 + [Chapter 4](https://brycechen1849.github.io/RL2BookSolutions/solution_ch4) exercise solutions 🏃 (in progress ...)
++ [Chapter 5](https://brycechen1849.github.io/RL2BookSolutions/solution_ch5) exercise solutions 🏃 (in progress ...)
 + ...  
 
 ### Dependencies
